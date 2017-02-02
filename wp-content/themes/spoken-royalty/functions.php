@@ -181,8 +181,8 @@ function cws_theme_setup() {
 		'header-text'		=> false,
 		'flex-height'		=> true,
 		'flex-width'		=> true,
-		'height'			=> 250,
-		'width'				=> 250,
+		'height'			=> 100,
+		'width'				=> 200,
 	) );
 
 
