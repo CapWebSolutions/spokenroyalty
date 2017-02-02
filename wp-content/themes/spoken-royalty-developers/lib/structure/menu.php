@@ -54,7 +54,7 @@ function setup_secondary_menu_args( array $args ) {
 
 // Add 3rd menu just above footer widget area
 // Menus are added to theme support in setup.php
-add_action( 'genesis_before_footer', 'add_tertiary_nav_genesis' ); 
+// add_action( 'genesis_before_footer', 'add_tertiary_nav_genesis' ); 
 function add_tertiary_nav_genesis() {
 	echo '<div class="nav-tertiary">';
 	wp_nav_menu( array( 'theme_location' => 'tertiary', 'container_class' => 'genesis-nav-menu' ) );

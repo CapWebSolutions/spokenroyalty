@@ -56,5 +56,5 @@ add_filter( 'genesis_footer_creds_text', __NAMESPACE__ . '\do_footer_creds' );
  * @return string Footer credentials, as shortcodes.
  */
 function do_footer_creds() {
-	return 'Copyright [footer_copyright first="2016"] Spoken Royalty Developers Theme &middot; ' . esc_html( get_bloginfo( 'description' ) );
+	return 'Copyright [footer_copyright first="2016"] Spoken Royalty LLC &middot; ' . esc_html( get_bloginfo( 'description' ) );
 }
