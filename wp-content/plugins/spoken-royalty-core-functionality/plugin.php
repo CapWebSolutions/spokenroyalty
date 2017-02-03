@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Cap Web Solutions Core Functionality
- * Plugin URI: 
- * Description: This contains all this site's core functionality so that it is theme independent. Customized for capwebsolutions.com
- * Version: 2.1.0
+ * Plugin Name: Spoken Royalty Core Functionality
+ * Plugin URI: https://github.com/CapWebSolutions/spokenroyalty
+ * Description: This contains all this site's core functionality so that it is theme independent. Customized for spokenroyalty.com
+ * Version: 1.0.0
  * Author: Cap Web Solutions
  * Author URI: https://capwebsolutions.com
  *
@@ -31,14 +31,9 @@ include_once( CWS_DIR . '/lib/functions/post-types.php' );
 // Widgets
 //include_once( CWS_DIR . '/lib/widgets/widget-social.php' );
 
-// Editor Style Refresh
-include_once( CWS_DIR . '/lib/functions/editor-style-refresh.php' );
-
 // General
 include_once( CWS_DIR . '/lib/functions/general.php' );
 
 // Woo tweaks
 include_once( CWS_DIR . '/lib/functions/wootweaks.php' );
 
-// Invoice Stuff
-// include_once( CWS_DIR . '/lib/functions/send-invoice-email-on-publish.php' );
