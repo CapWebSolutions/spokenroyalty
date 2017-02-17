@@ -6,9 +6,9 @@
  *
  * @package      Core_Functionality
  * @since        1.0.0
- * @link         https://github.com/billerickson/Core-Functionality
- * @author       Bill Erickson <bill@billerickson.net>
- * @copyright    Copyright (c) 2011, Bill Erickson
+ * @link         https://github.com/capwebsolutions/spoken-royalty-core-functionality
+ * @author       Matt Ryan <matt@capwebsolutions.com>
+ * @copyright    Copyright (c) 2017, Matt Ryan
  * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
@@ -204,7 +204,7 @@ function wsm_keep_ie_modern( $headers ) {
 add_filter( 'genesis_search_text', 'sp_search_text' );
 function sp_search_text( $text ) {
 	// return esc_attr( 'Search my blog...' );
-	return esc_attr( 'Seach ' . get_bloginfo( $show, 'display' ));
+	return esc_attr( 'Search ' . get_bloginfo( $show='', 'display' ));
 	get_permalink();
 }
 
@@ -258,21 +258,10 @@ function disable_self_ping( &$links ) {
             unset($links[$l]);
 }
 
-add_shortcode('AffiliateDisclaimer', 'mr_affiliate_disclaimer');
-/**
- * Create shortcode and set content for affiliate disclosure.
- *
- * @author Matt Ryan <http://www.mattryan.co>
- * @since 1.0.0
- */
-function mr_affiliate_disclaimer() {
-	    return '<em><small>Disclaimer:  Some of the off-site links referenced on this site are what is referred to as an affiliate link. If you choose to purchase or use the product or service through that link, the post author will get a small referral fee from the service or product provider. Your price is the same whether or not you use the affiliate link. </small></em>';
-}
-
 //* Change the footer text
 add_filter('genesis_footer_creds_text', 'cws_sp_footer_creds_filter');
 function cws_sp_footer_creds_filter( $creds ) {
-  $creds = '[footer_copyright first="2013" Before="Copyright "] &middot; Cap Web Solutions LLC &middot; Built on the <a href="https://capwebsolutions.com/go/genesis" title="Genesis Framework">Genesis Framework</a> using the <a href="https://capwebsolutions.com/go/digital-pro" title="Digital Pro Genesis Child Theme">Digital Pro theme</a>.<br>Powered by <a href="http://wordpress.org/">WordPress</a>. &middot; <a href="https://capwebsolutions.com/wp-admin">Magic Area</a>';
+  $creds = '[footer_copyright first="2017" Before="Copyright "] &middot; Spoken Royalty';
   return $creds;
 }
 
@@ -294,11 +283,6 @@ function gform_tabindexer( $tab_index, $form = false ) {
 // Ref: https://www.gravityhelp.com/gravity-forms-v1-9-placeholders/
 add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
 
-// Move submit button on form & add a little following comment.
-//add_filter( 'gform_submit_button_10', 'add_paragraph_below_submit', 10, 2 );
-function add_paragraph_below_submit( $button, $form ) {
-    return $button .= "<small>By joining the Cap Web Nuggets newsletter, you agree to a basic  <a href=\"privacy-policy/\">Privacy Policy</a>. Got questions? <a href=\"contact/\">Get in touch.</a>.</small>";
-}
 // End of Gravity Forms Specific Stuff ================================
 
 // Custom 404 Pages ===================================================
