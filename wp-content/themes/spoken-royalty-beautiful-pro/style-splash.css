@@ -1,0 +1,113 @@
+html {
+  /*overflow: hidden;*/
+  background: #222;
+}
+
+body.spoken-splash {
+	background-color: #000;
+}
+
+.poet-pic {
+  position: absolute;
+  width: 180px;
+  animation: shoot 10s cubic-bezier(0.99, 0.1, 1, 1) infinite;
+  animation-name: shoot, fade;
+  border-radius: 50%;
+  font-size: 14px;
+}
+.poet-pic:nth-child(1) {
+  transform: translate(47vw, 56vh) scale(5);
+  animation-duration: 15s;
+  animation-delay: 0s;
+  animation-direction: alternate, reverse, normal;
+  top: 0;
+  left: 0;
+}
+.poet-pic:nth-child(2) {
+  transform: translate(41vw, 74vh) scale(5);
+  animation-duration: 15s;
+  animation-delay: -15s;
+  animation-direction: alternate, reverse, normal;
+  top: -150px;
+  left: -700px;
+}
+.poet-pic:nth-child(3) {
+  transform: translate(39vw, 18vh) scale(5);
+  animation-duration: 15s;
+  animation-delay: -30s;
+  animation-direction: alternate, reverse, normal;
+  top: -150px;
+  left: -350px;
+}
+.poet-pic:nth-child(4) {
+  transform: translate(63vw, 96vh) scale(5);
+  animation-duration: 40s;
+  animation-delay: -5s;
+  animation-direction: alternate, reverse, normal;
+  top: -150px;
+  left: 175px;
+}
+.poet-pic:nth-child(5) {
+  transform: translate(23vw, 43vh) scale(5);
+  animation-duration: 20s;
+  animation-delay: 0;
+  animation-direction: alternate, reverse, normal;
+  top: 50;
+  left: 15;
+}
+.poet-pic:nth-child(6) {
+  transform: translate(68vw, 89vh) scale(5);
+  animation-duration: 30s;
+  animation-delay: -10s;
+  animation-direction: alternate, reverse, normal;
+  top: 0;
+  left: 100px;
+}
+
+@keyframes shoot {
+  0% {
+    transform: translate(50vw, 50vh) scale(0.5);
+  }
+}
+
+@keyframes moveAcross {
+    0% {
+        left: -90px;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  19% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.25;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  84% {
+    opacity: 0.44;
+  }
+  86% {
+    opacity: 0.88;
+  }
+  88% {
+    opacity: 0.45;
+  }
+  90% {
+    opacity: 0.9;
+  }
+  94% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
