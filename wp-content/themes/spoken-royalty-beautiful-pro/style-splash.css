@@ -2,13 +2,12 @@ html {
   /*overflow: hidden;*/
   background: #222;
 }
-
 body.spoken-splash {
 	background-color: #000;
 }
 
 .poet-pic {
-  position: absolute;
+  /*position: absolute;*/
   width: 180px;
   animation: shoot 10s cubic-bezier(0.99, 0.1, 1, 1) infinite;
   animation-name: shoot, fade;
@@ -16,24 +15,24 @@ body.spoken-splash {
   font-size: 14px;
 }
 .poet-pic:nth-child(1) {
-  transform: translate(47vw, 56vh) scale(5);
-  animation-duration: 15s;
+  transform: translate(47vw, 56vh) rotate(45deg) scale(5);
+  animation-duration: 30s;
   animation-delay: 0s;
   animation-direction: alternate, reverse, normal;
   top: 0;
   left: 0;
 }
 .poet-pic:nth-child(2) {
-  transform: translate(41vw, 74vh) scale(5);
-  animation-duration: 15s;
+  transform: translate(41vw, 74vh) rotate(270deg) scale(5);
+  animation-duration: 30s;
   animation-delay: -15s;
   animation-direction: alternate, reverse, normal;
   top: -150px;
-  left: -700px;
+  left: -150px;
 }
 .poet-pic:nth-child(3) {
-  transform: translate(39vw, 18vh) scale(5);
-  animation-duration: 15s;
+  transform: translate(39vw, 18vh) rotate(90deg) scale(5);
+  animation-duration: 30s;
   animation-delay: -30s;
   animation-direction: alternate, reverse, normal;
   top: -150px;
@@ -41,29 +40,36 @@ body.spoken-splash {
 }
 .poet-pic:nth-child(4) {
   transform: translate(63vw, 96vh) scale(5);
-  animation-duration: 40s;
-  animation-delay: -5s;
+  animation-duration: 30s;
+  animation-delay: -45s;
   animation-direction: alternate, reverse, normal;
   top: -150px;
   left: 175px;
 }
 .poet-pic:nth-child(5) {
   transform: translate(23vw, 43vh) scale(5);
-  animation-duration: 20s;
-  animation-delay: 0;
+  animation-duration: 30s;
+  animation-delay: -15s;
   animation-direction: alternate, reverse, normal;
   top: 50;
   left: 15;
 }
 .poet-pic:nth-child(6) {
-  transform: translate(68vw, 89vh) scale(5);
+  transform: translate(68vw, 89vh) rotate(-45deg) scale(5);
   animation-duration: 30s;
-  animation-delay: -10s;
+  animation-delay: -30s;
   animation-direction: alternate, reverse, normal;
   top: 0;
   left: 100px;
 }
-
+.poet-pic:nth-child(7) {
+  transform: translate(68vw, 89vh) rotate(-45deg) scale(5);
+  animation-duration: 30s;
+  animation-delay: -30s;
+  animation-direction: normal;
+  top: 0%;
+  left: 0%;
+}
 @keyframes shoot {
   0% {
     transform: translate(50vw, 50vh) scale(0.5);

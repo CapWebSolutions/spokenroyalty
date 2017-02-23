@@ -5,7 +5,7 @@
 	Author: StudioPress / Cap Web Solutions
 	Author URI: http://capwebsolutions.com/
 	
-	Version: 2.1
+	Version: 2.2
  
 	Template: genesis
 	Template Version: 2.1
@@ -169,12 +169,13 @@ textarea:focus,
 }
 
 a {
+	/*background-color: #9B6E13;*/
 	color: #9B6E13;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #333;
+	color: #000;
 }
 
 .content a.more-link {
@@ -1667,9 +1668,9 @@ Footer Widgets
 	margin-bottom: 0;
 	padding-bottom: 0;
 }
+
 .btn-join a {
 	color: #fff;
-	/*background-color: #9B6E13;*/
 	}
 .btn-join:hover {
 	color: #fff;
@@ -1682,8 +1683,11 @@ Site Footer
 
 .site-footer {
 	font-size: 16px;
-	padding: 40px 0;
 	text-align: center;
+    clear: both;
+    padding: 60px 0 20px;
+    margin: 0 auto;
+    max-width: 1140px;	
 }
 
 .site-footer a {

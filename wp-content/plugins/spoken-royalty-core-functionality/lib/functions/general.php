@@ -258,13 +258,6 @@ function disable_self_ping( &$links ) {
             unset($links[$l]);
 }
 
-//* Change the footer text
-add_filter('genesis_footer_creds_text', 'cws_sp_footer_creds_filter');
-function cws_sp_footer_creds_filter( $creds ) {
-  $creds = '[footer_copyright first="2017" Before="Copyright "] &middot; Spoken Royalty';
-  return $creds;
-}
-
 // Gravity Forms Specific Stuff =======================================
 
 /**

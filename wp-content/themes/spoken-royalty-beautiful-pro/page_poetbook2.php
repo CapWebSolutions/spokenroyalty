@@ -12,7 +12,7 @@ Template Name: PoetBook2
 */
 
 //* Enqueue styles needed for this page only. 
-wp_enqueue_style( 'spoken-splash-style', get_stylesheet_directory_uri() . '/style-poetbook.css', array(), CHILD_THEME_VERSION );
+wp_enqueue_style( 'spoken-poetbook-style', get_stylesheet_directory_uri() . '/style-poetbook.css', array(), CHILD_THEME_VERSION );
 
 
 //* Add splash body class to the head

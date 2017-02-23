@@ -11,7 +11,7 @@ load_child_theme_textdomain( 'beautiful', apply_filters( 'child_theme_textdomain
 //* Child theme (do not remove)
 define( 'CHILD_THEME_NAME', __( 'Spoken Royalty', 'spoken-royalty' ) );
 define( 'CHILD_THEME_URL', 'http://my.studiopress.com/themes/beautiful/' );
-define( 'CHILD_THEME_VERSION', '2.1' );
+define( 'CHILD_THEME_VERSION', '2.2' );
 
 //* Add HTML5 markup structure
 add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', ) );
@@ -40,7 +40,7 @@ function beautiful_enqueue_scripts_styles() {
 	wp_enqueue_style( 'dashicons' );
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,500', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style( 'spoken-banner-style', get_stylesheet_directory_uri() . '/style-banner.css', array(), CHILD_THEME_VERSION );
-	// wp_enqueue_style( 'spoken-splash-style', get_stylesheet_directory_uri() . '/style-splash.css', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style( 'spoken-splash-style', get_stylesheet_directory_uri() . '/style-splash.css', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style( 'spoken-splash-style', get_stylesheet_directory_uri() . '/style-scripture.css', array(), CHILD_THEME_VERSION );
 }
 
@@ -149,7 +149,8 @@ function beautiful_before_header_left_right() {
 add_action( 'genesis_after_header', 'beautiful_site_header_banner' );
 function beautiful_site_header_banner() {
 
-	echo '<div class="site-header-banner"><img src="' . get_stylesheet_directory_uri() . '/images/header-banner.png" />';
+	// echo '<div class="site-header-banner"><img src="' . get_stylesheet_directory_uri() . '/images/header-banner.png" />';
+	echo '<div class="site-header-banner"><img src="' . get_stylesheet_directory_uri() . '/images/header-banner-words-logo.png" />';
 		genesis_widget_area( 'home-featured', array(
 			'before'	=> '<div class="wrap">',
 			'after'		=> '</div>',
@@ -171,6 +172,55 @@ remove_action( 'genesis_site_description', 'genesis_seo_site_description' );
 //* Reposition the secondary navigation menu
 remove_action( 'genesis_after_header', 'genesis_do_subnav' );
 add_action( 'genesis_after_header', 'genesis_do_subnav', 15 );
+
+// Assign primary navitgation menu conditionally based on logged in/out status
+add_filter( 'wp_nav_menu_args', 'replace_menu_in_primary' );
+function replace_menu_in_primary( $args ) {
+	if ( $args['theme_location'] != 'primary' ) {
+		return $args;
+	}
+
+	if( is_user_logged_in() ) { // Shop Page or any of its sub pages
+		$args['menu'] = 'Logged-In Menu';
+	} else {					// not logged in
+		$args['menu'] = 'Logged-Out Menu';
+	}
+	return $args;
+}
+// Returns true when we are on a Page in question or any of its sub Pages
+// https://codex.wordpress.org/Function_Reference/is_page#Testing_for_sub-Pages
+function cap_web_is_tree( $pid ) {      // $pid = The ID of the page we're looking for pages underneath
+	global $post;               // load details about this page
+
+	if ( is_page( $pid ) )
+		return true;            // we're at the page or at a sub page
+
+	$anc = get_post_ancestors( $post->ID );
+	foreach ( $anc as $ancestor ) {
+		if( is_page() && $ancestor == $pid ) {
+			return true;
+		}
+	}
+
+	return false;  // we aren't at the page, and the page is not an ancestor
+}
+
+add_action( 'wp', 'cap_web_custom_lockdown_redirect', 3 ); 
+function cap_web_custom_lockdown_redirect(){ 
+	global $wp; 
+	if ( !is_user_logged_in() ) { 
+		if ( bp_is_activation_page() || 
+		     bp_is_register_page() || 
+			 is_page_template( 'template-custom-lockdown.php' ) ||
+			 cap_web_is_tree( '37' ) ||     //* 37 is the shop page
+			 ( in_array( $GLOBALS['pagenow'], array( 'wp-login.php' ) ) ) 
+		) return; 
+
+		bp_core_redirect( get_option('siteurl') . "/welcome");
+		exit; 
+	} 
+}
+
 
 // Remove Site Title
 remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
@@ -250,12 +300,14 @@ function beautiful_extra_sidebars() {
 
 		echo '<div class="split-sidebars">';
 //* left sidebar for all visitors		
-
-		genesis_widget_area( 'split-sidebar-left', array(
-			'before' => '<div class="split-sidebar-left" class="widget-area">',
-			'after'  => '</div>',
-		) );
-
+		if ( !is_page( '756' ) ) {
+				genesis_widget_area( 'split-sidebar-left', array(
+					'before' => '<div class="split-sidebar-left" class="widget-area">',
+					'after'  => '</div>',
+				) );
+		} else {
+			return;
+		}
 //* right sidebar only for logged in users
 		if ( is_user_logged_in() ) {
 			genesis_widget_area( 'split-sidebar-right', array(
@@ -328,13 +380,10 @@ remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 3
  
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 
+//* Remove page titles site wide (posts & pages)
+// remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
+// remove_action( 'genesis_post_title', 'genesis_do_post_title' );
 
-/*
-	Remove titles from select pages (use slug). 
- */
-    //* Remove page titles site wide (posts & pages)
-remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
-remove_action( 'genesis_post_title', 'genesis_do_post_title' );
 // add_action( 'get_header', 'remove_titles_from_pages', 9 );
 function remove_titles_from_pages() {
     if ( is_page(array('location', 'townhome-living', 'multi-family-living', 'contact-us') ) ) {

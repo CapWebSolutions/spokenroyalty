@@ -34,6 +34,9 @@ include_once( CWS_DIR . '/lib/functions/post-types.php' );
 // General
 include_once( CWS_DIR . '/lib/functions/general.php' );
 
+// Footer Setup 
+include_once( CWS_DIR . '/lib/functions/core-footer.php' );
+
 // Woo tweaks
 include_once( CWS_DIR . '/lib/functions/wootweaks.php' );
 
