@@ -54,13 +54,6 @@ add_theme_support( 'custom-header', array(
 	'width'                  => 150,
 ) );
 
-//* Add support for custom background
-// add_theme_support( 'custom-background', array(
-// 	'default-color'         => 'ffffff',
-// 	'default-image'         => get_stylesheet_directory_uri() . '/images/header-banner.png',
-// 	'wp-head-callback'      => 'beautiful_background_callback',
-// ) );
-
 //* Add custom background callback 
 function beautiful_background_callback() { 
 
@@ -130,17 +123,6 @@ function beautiful_before_header_left_right() {
 	) );
 }
 
-//* Hook site header banner after header
-// add_action( 'genesis_after_header', 'beautiful_site_header_banner' );
-// function beautiful_site_header_banner() {
-
-// 	if ( ! get_background_image() )
-// 		return;
-
-// 	echo '<div class="site-header-banner"></div>';
-
-// }
-
 /* NEW *************************************************** */
 /* re: https://sridharkatakam.com/responsive-header-banner-image-beautiful-pro/ */
 
@@ -150,7 +132,7 @@ add_action( 'genesis_after_header', 'beautiful_site_header_banner' );
 function beautiful_site_header_banner() {
 
 	// echo '<div class="site-header-banner"><img src="' . get_stylesheet_directory_uri() . '/images/header-banner.png" />';
-	echo '<div class="site-header-banner"><img src="' . get_stylesheet_directory_uri() . '/images/header-banner-words-logo.png" />';
+	echo '<div class="site-header-banner"><img src="' . get_stylesheet_directory_uri() . '/images/header-banner-words-logo-v2.png" />';
 		genesis_widget_area( 'home-featured', array(
 			'before'	=> '<div class="wrap">',
 			'after'		=> '</div>',
@@ -187,39 +169,28 @@ function replace_menu_in_primary( $args ) {
 	}
 	return $args;
 }
-// Returns true when we are on a Page in question or any of its sub Pages
-// https://codex.wordpress.org/Function_Reference/is_page#Testing_for_sub-Pages
-function cap_web_is_tree( $pid ) {      // $pid = The ID of the page we're looking for pages underneath
-	global $post;               // load details about this page
+// Ref: https://sridharkatakam.com/useful-functions-checking-pages-sub-pages-wordpress/
+// To check a Page by ID for that Page or its direct descendants (sub/child pages)
+function cap_web_is_tree( $pid ) { // $pid = The ID of the page we're looking for pages underneath
 
-	if ( is_page( $pid ) )
-		return true;            // we're at the page or at a sub page
+	global $post; // load details about this page
 
-	$anc = get_post_ancestors( $post->ID );
-	foreach ( $anc as $ancestor ) {
-		if( is_page() && $ancestor == $pid ) {
-			return true;
-		}
-	}
+	if( is_page() && ( $post->post_parent == $pid || is_page( $pid ) ) )
+		return true; // we're at the page or at a sub page
+	else
+		return false; // we're elsewhere
 
-	return false;  // we aren't at the page, and the page is not an ancestor
 }
 
-add_action( 'wp', 'cap_web_custom_lockdown_redirect', 3 ); 
-function cap_web_custom_lockdown_redirect(){ 
-	global $wp; 
-	if ( !is_user_logged_in() ) { 
-		if ( bp_is_activation_page() || 
-		     bp_is_register_page() || 
-			 is_page_template( 'template-custom-lockdown.php' ) ||
-			 cap_web_is_tree( '37' ) ||     //* 37 is the shop page
-			 ( in_array( $GLOBALS['pagenow'], array( 'wp-login.php' ) ) ) 
-		) return; 
-
-		bp_core_redirect( get_option('siteurl') . "/welcome");
-		exit; 
-	} 
-}
+// add_action( 'wp', 'cap_web_custom_lockdown_redirect', 3 ); 
+// function cap_web_custom_lockdown_redirect(){ 
+// 	global $wp; 
+// 	if ( !is_user_logged_in() ) { 
+// 		if ( bp_is_activation_page() || bp_is_register_page() || is_page_template( 'template-custom-lockdown.php' ) || cap_web_is_tree( '37' ) || ( in_array( $GLOBALS['pagenow'], array( 'wp-login.php' ) ) ) ) return; 
+// 		bp_core_redirect( get_option('siteurl') . "/welcome");
+// 		exit; 
+// 	} 
+// }
 
 
 // Remove Site Title

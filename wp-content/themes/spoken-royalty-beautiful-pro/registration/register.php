@@ -16,7 +16,7 @@
 					<a href="<?php echo wp_lostpassword_url( get_permalink() ); ?>" title="Lost Password">Lost Your Password?</a> 
 			</div> 
 			<div id="my-custom-registration">
-
+<div id="my-custom-home"> <?php the_post(); ?> <?php get_template_part( 'content', 'page' );?> </div> <div id="my-custom-login"> <h2><?php _e( 'Login Here', 'buddypress' ) ?></h2> <?php wp_login_form(); ?> <a href="<?php echo wp_lostpassword_url( get_permalink() ); ?>" title="Lost Password">Lost Your Password?</a> </div> <div id="my-custom-registration">
 
 
 
@@ -319,4 +319,6 @@
 		});
 	</script>
 
-<?php get_footer( 'buddypress' ); ?>
+<?php
+//* Run the Genesis loop
+genesis();
