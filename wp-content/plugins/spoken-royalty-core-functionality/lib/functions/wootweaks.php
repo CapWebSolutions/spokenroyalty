@@ -11,6 +11,8 @@
  * @copyright    Copyright (c) 2011, Bill Erickson
  * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
+
+ namespace SpokenRoyaltyCore;
 /*
  * wc_remove_related_products
  * 
@@ -22,3 +24,18 @@ function wc_remove_related_products( $args ) {
 }
 add_filter('woocommerce_related_products_args','wc_remove_related_products', 10); 
 
+/**
+ * woo_hide_page_title
+ *
+ * Removes the "shop" title on the main shop page
+ *
+ * @access      public
+ * @since       1.0 
+ * @return      void
+*/
+function woo_hide_page_title() {
+	
+	return false;
+	
+}
+add_filter( 'woocommerce_show_page_title' , 'woo_hide_page_title' );

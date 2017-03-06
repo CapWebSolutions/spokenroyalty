@@ -9,7 +9,7 @@ include_once( get_stylesheet_directory() . '/lib/theme-defaults.php' );
 load_child_theme_textdomain( 'beautiful', apply_filters( 'child_theme_textdomain', get_stylesheet_directory() . '/languages', 'beautiful' ) );
 
 //* Child theme (do not remove)
-define( 'CHILD_THEME_NAME', __( 'Spoken Royalty', 'spoken-royalty' ) );
+define( 'CHILD_THEME_NAME', __( 'Spoken Royalty Beautiful', 'spoken-royalty' ) );
 define( 'CHILD_THEME_URL', 'http://my.studiopress.com/themes/beautiful/' );
 define( 'CHILD_THEME_VERSION', '2.2' );
 
@@ -41,7 +41,7 @@ function beautiful_enqueue_scripts_styles() {
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,500', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style( 'spoken-banner-style', get_stylesheet_directory_uri() . '/style-banner.css', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style( 'spoken-splash-style', get_stylesheet_directory_uri() . '/style-splash.css', array(), CHILD_THEME_VERSION );
-	wp_enqueue_style( 'spoken-splash-style', get_stylesheet_directory_uri() . '/style-scripture.css', array(), CHILD_THEME_VERSION );
+	wp_enqueue_style( 'spoken-scripture-style', get_stylesheet_directory_uri() . '/style-scripture.css', array(), CHILD_THEME_VERSION );
 }
 
 
@@ -132,7 +132,7 @@ add_action( 'genesis_after_header', 'beautiful_site_header_banner' );
 function beautiful_site_header_banner() {
 
 	// echo '<div class="site-header-banner"><img src="' . get_stylesheet_directory_uri() . '/images/header-banner.png" />';
-	echo '<div class="site-header-banner"><img src="' . get_stylesheet_directory_uri() . '/images/header-banner-words-logo-v2.png" />';
+	echo '<div class="site-header-banner"><img src="' . get_stylesheet_directory_uri() . '/images/header-banner-words-logo-v3.png" />';
 		genesis_widget_area( 'home-featured', array(
 			'before'	=> '<div class="wrap">',
 			'after'		=> '</div>',
@@ -153,9 +153,9 @@ remove_action( 'genesis_site_description', 'genesis_seo_site_description' );
 
 //* Reposition the secondary navigation menu
 remove_action( 'genesis_after_header', 'genesis_do_subnav' );
-add_action( 'genesis_after_header', 'genesis_do_subnav', 15 );
+add_action( 'genesis_after_header', 'genesis_do_subnav', 11 );
 
-// Assign primary navitgation menu conditionally based on logged in/out status
+// Assign primary navigation menu conditionally based on logged in/out status
 add_filter( 'wp_nav_menu_args', 'replace_menu_in_primary' );
 function replace_menu_in_primary( $args ) {
 	if ( $args['theme_location'] != 'primary' ) {
@@ -181,17 +181,6 @@ function cap_web_is_tree( $pid ) { // $pid = The ID of the page we're looking fo
 		return false; // we're elsewhere
 
 }
-
-// add_action( 'wp', 'cap_web_custom_lockdown_redirect', 3 ); 
-// function cap_web_custom_lockdown_redirect(){ 
-// 	global $wp; 
-// 	if ( !is_user_logged_in() ) { 
-// 		if ( bp_is_activation_page() || bp_is_register_page() || is_page_template( 'template-custom-lockdown.php' ) || cap_web_is_tree( '37' ) || ( in_array( $GLOBALS['pagenow'], array( 'wp-login.php' ) ) ) ) return; 
-// 		bp_core_redirect( get_option('siteurl') . "/welcome");
-// 		exit; 
-// 	} 
-// }
-
 
 // Remove Site Title
 remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
@@ -249,9 +238,7 @@ function beautiful_remove_entry_meta() {
 //* Modify the size of the Gravatar in the author box
 add_filter( 'genesis_author_box_gravatar_size', 'beautiful_author_box_gravatar' );
 function beautiful_author_box_gravatar( $size ) {
-
 	return 180;
-
 }
 
 //* Modify the size of the Gravatar in the entry comments
@@ -326,11 +313,11 @@ genesis_register_sidebar( array(
 	'name'        => __( 'Welcome Message', 'beautiful' ),
 	'description' => __( 'This is the welcome message widget area.', 'beautiful' ),
 ) );
-genesis_register_sidebar( array(
-	'id'          => 'split-sidebar-left',
-	'name'        => __( 'Split Sidebar Left', 'beautiful' ),
-	'description' => __( 'This is the left split sidebar widget area.', 'beautiful' ),
-) );
+// genesis_register_sidebar( array(
+// 	'id'          => 'split-sidebar-left',
+// 	'name'        => __( 'Split Sidebar Left', 'beautiful' ),
+// 	'description' => __( 'This is the left split sidebar widget area.', 'beautiful' ),
+// ) );
 genesis_register_sidebar( array(
 	'id'          => 'split-sidebar-right',
 	'name'        => __( 'Split Sidebar Right', 'beautiful' ),

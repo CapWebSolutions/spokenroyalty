@@ -992,6 +992,29 @@ img#wpstats {
 	display: none;
 }
 
+/* WooCommerce
+--------------------------------------------- */
+.woocommerce #respond input#submit.alt:hover, 
+.woocommerce a.button.alt:hover, 
+.woocommerce button.button.alt:hover, 
+.woocommerce input.button.alt:hover {
+    background-color: #ebbc5c !important;
+    color: #fff;
+}
+.woocommerce #respond input#submit.alt, 
+.woocommerce a.button.alt, 
+.woocommerce button.button.alt, 
+.woocommerce input.button.alt {
+    background-color: #9B6E13 !important;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Shop Page Tweaks
+--------------------------------------------- */
+img.waic-logo {
+    padding-bottom: 50px;
+}
 
 /*
 Before Header
@@ -1279,7 +1302,7 @@ Site Navigation
 
 .genesis-nav-menu > .right > a {
 	display: inline;
-	padding: 0;
+	padding: 20px;
 }
 
 .genesis-nav-menu > .rss > a {

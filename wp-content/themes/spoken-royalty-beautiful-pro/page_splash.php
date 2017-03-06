@@ -38,12 +38,15 @@ remove_action( 'genesis_after_header', 'genesis_do_subnav', 15 );
 //* Remove site header banner
 remove_action( 'genesis_after_header', 'beautiful_site_header_banner' );
 
+//* Remove Welcome Message banner
+remove_action( 'genesis_before_loop', 'beautiful_welcome_message' );
+
 //* Remove breadcrumbs
 remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 
 // Remove site description / tagline 
 remove_action( 'genesis_after_header', 'genesis_seo_site_description' );
-
+ 
 //* Remove the primary navigation menu
 remove_action( 'genesis_before_header', 'beautiful_before_header_left_right' );
 //* Remove the secondary navigation menu
@@ -59,13 +62,21 @@ remove_action( 'genesis_footer', 'genesis_footer_markup_close', 15 );
 
 //* Dump out content.
 ?>
+<div class="splash-wrap">
 <center><button style="margin-top:20px;"><a style="color:#fff;" href="http://spokenroyalty.dev/home-not-logged-in/">Enter Site</a></button></center>
-<div class="poet-pic"><img class="size-medium wp-image-329" src="http://spokenroyalty.dev/wp-content/uploads/william-shakespeare-portrait-269x300.jpg" alt="" width="269" height="300" />William Shakespeare</div>
-<div class="poet-pic"><img class="size-full wp-image-328" src="http://spokenroyalty.dev/wp-content/uploads/William-Wordsworth.jpg" alt="" width="286" height="289" />William Wordsworth</div>
-<div class="poet-pic"><img class="size-full wp-image-327" src="http://spokenroyalty.dev/wp-content/uploads/Sylvia_Plath.jpg" alt="" width="288" height="386"  />Sylvia Plath</div>
+<div style="margin-left: 100px;"><img class="size-medium wp-image-326" src="http://spokenroyalty.dev/wp-content/uploads/maya-angelou1-229x300.jpg" alt="" width="229" height="300" /><br>Maya Angelou</div>
 <div class="poet-pic"><img class="size-medium wp-image-326" src="http://spokenroyalty.dev/wp-content/uploads/maya-angelou1-229x300.jpg" alt="" width="229" height="300" />Maya Angelou</div>
+<div style="margin-left: 800px;margin-top:-500px;"><img class="size-full wp-image-324" src="http://spokenroyalty.dev/wp-content/uploads/Emily_Dickinson_.jpg" alt="" width="582" height="685" /><br>Emily Dickinson</div>-->
+<div class="poet-pic"><img class="size-full wp-image-324" src="http://spokenroyalty.dev/wp-content/uploads/Emily_Dickinson_.jpg" alt="" width="582" height="685" />Emily Dickinson</div>-->
+<div style="margin-left: 390px;margin-top:-829px;"><img class="size-full wp-image-325" src="http://spokenroyalty.dev/wp-content/uploads/Langston-Huges-.jpg" alt="" width="400" height="400" /><br>Langston Huges</div>
 <div class="poet-pic"><img class="size-full wp-image-325" src="http://spokenroyalty.dev/wp-content/uploads/Langston-Huges-.jpg" alt="" width="400" height="400" />Langston Huges</div>
-<div class="poet-pic"><img class="size-full wp-image-324" src="http://spokenroyalty.dev/wp-content/uploads/Emily_Dickinson_.jpg" alt="" width="582" height="685" />Emily Dickinson</div>
+<div style="margin-left: 33px;margin-top:-314px;"><img class="size-full wp-image-327" src="http://spokenroyalty.dev/wp-content/uploads/Sylvia_Plath.jpg" alt="" width="288" height="386"  /><br>Sylvia Plath</div>
+<div class="poet-pic"><img class="size-full wp-image-327" src="http://spokenroyalty.dev/wp-content/uploads/Sylvia_Plath.jpg" alt="" width="288" height="386"  />Sylvia Plath</div>
+<div style="margin-left: 519px;margin-top:-636px;"><img class="size-medium wp-image-329" src="http://spokenroyalty.dev/wp-content/uploads/william-shakespeare-portrait-269x300.jpg" alt="" width="269" height="300" /><br>William Shakespeare</div>
+<div class="poet-pic"><img class="size-medium wp-image-329" src="http://spokenroyalty.dev/wp-content/uploads/william-shakespeare-portrait-269x300.jpg" alt="" width="269" height="300" />William Shakespeare</div>
+<div style="margin-left: 1029px;margin-top:-389px;"><img class="size-full wp-image-328" src="http://spokenroyalty.dev/wp-content/uploads/William-Wordsworth.jpg" alt="" width="286" height="289" /><br>William Wordsworth</div>
+<div class="poet-pic"><img class="size-full wp-image-328" src="http://spokenroyalty.dev/wp-content/uploads/William-Wordsworth.jpg" alt="" width="286" height="289" />William Wordsworth</div>
+</div>
 <?php
 
 //* Run the Genesis loop

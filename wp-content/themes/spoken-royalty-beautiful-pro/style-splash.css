@@ -1,13 +1,30 @@
 html {
   /*overflow: hidden;*/
-  background: #222;
+  /*background: #222;*/
 }
 body.spoken-splash {
-	background-color: #000;
+	/*background-color: #000;*/
+}
+.splash-wrap:before {
+	content: " ";
+	display: table;
+}
+.splash-wrap {
+ 	background-color: #000;
+	margin: 0 auto;
+	max-width: 1900px;
+  max-height: 1100px;
+}
+
+.splash-wrap:after {
+	clear: both;
+	content: " ";
+	display: table;
 }
 
 .poet-pic {
   /*position: absolute;*/
+  /*margin-left: 300px;*/
   width: 180px;
   animation: shoot 10s cubic-bezier(0.99, 0.1, 1, 1) infinite;
   animation-name: shoot, fade;
@@ -15,7 +32,8 @@ body.spoken-splash {
   font-size: 14px;
 }
 .poet-pic:nth-child(1) {
-  transform: translate(47vw, 56vh) rotate(45deg) scale(5);
+  margin-top: -300px;
+  transform: translate(41vw, 74vh) rotate(45deg) scale(5);
   animation-duration: 30s;
   animation-delay: 0s;
   animation-direction: alternate, reverse, normal;
