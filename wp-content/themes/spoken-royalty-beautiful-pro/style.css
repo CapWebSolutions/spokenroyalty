@@ -530,7 +530,7 @@ Structure and Layout
 
 .sidebar {
 	float: right;
-	width: 360px;
+	/*width: 360px;*/
 }
 
 .sidebar-content .sidebar {
@@ -629,8 +629,11 @@ Structure and Layout
 	background: red;
 }
 /* Poet Book */
-.page-id-756 .entry-content {
-	background-image:url("images/open-book-pic.jpg"); 
+.page-id-756 .entry-content,
+.page-id-926 .entry-content,
+.page-id-927 .entry-content {
+	/*background-image:url("images/open-book-pic.jpg"); */
+	background-image:url("images/open-book-pic-2.jpg"); 
 	background-repeat: no-repeat;
 	background-position: 0% 30%;
 	width: 900px;
@@ -642,9 +645,19 @@ Structure and Layout
 	width: 40%;
 	margin-top: 75px;
 }
+.one-half.book-left-profile,
+.one-half.book-right-profile {
+	width: 35%;
+	margin-top: 65px;
+    margin-left: 100px;
+}
 .one-half.book-left {
 	clear: both;
 	margin-left: 70px;
+}
+.one-half.book-left-profile {
+	clear: both;
+	margin-left: 100px;
 }
 /*.one-half.book-right {
 }*/
@@ -926,6 +939,35 @@ Plugins
     border-left-width: 1px;
 }
 
+#buddypress .standard-form div.submit {
+    clear: both;
+    padding: 15px 0 15px !important;
+	margin-bottom: 20px;
+}
+
+#buddypress .generic-button a, 
+#buddypress .standard-form button, 
+#buddypress a.button, 
+#buddypress input[type=button], 
+#buddypress input[type=reset], 
+#buddypress input[type=submit], 
+#buddypress ul.button-nav li a, 
+a.bp-title-button,
+#signup_form > div.submit,
+#signup_submit a, 
+#buddypress .standard-form div.submit a {
+	color: #fff !important;
+	background-color: #9B6E13;
+	background: #9b6e13 !important;
+	border: none !important;
+    border-radius: 3px !important;
+	font-size: inherit !important;
+	}
+
+#buddypress .standard-form div.submit:hover {
+	color: #fff;
+	background-color: #ebbc5c;
+	}
 
 /* Genesis eNews Extended
 --------------------------------------------- */
@@ -1010,11 +1052,31 @@ img#wpstats {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Align Add To Cart Buttons */
+.woocommerce ul.products li.product, 
+.woocommerce-page ul.products li.product { 
+	min-height: 500px !important; 
+	margin-bottom:10px; 
+	}
+ul.products li.product a.button {
+	position: absolute !important; 
+	bottom: 100px; 
+	}
+
+/* Tweak size of Add to cart button text */
+.woocommerce #respond input#submit, 
+.woocommerce a.button, 
+.woocommerce button.button, 
+.woocommerce input.button {
+	font-size: 80% !important;
+}
 /* Shop Page Tweaks
 --------------------------------------------- */
 img.waic-logo {
     padding-bottom: 50px;
 }
+
+
 
 /*
 Before Header

@@ -1,10 +1,3 @@
-html {
-  /*overflow: hidden;*/
-  /*background: #222;*/
-}
-body.spoken-splash {
-	/*background-color: #000;*/
-}
 .splash-wrap:before {
 	content: " ";
 	display: table;
@@ -13,7 +6,7 @@ body.spoken-splash {
  	background-color: #000;
 	margin: 0 auto;
 	max-width: 1900px;
-  max-height: 1100px;
+  height: 1000px;
 }
 
 .splash-wrap:after {
@@ -23,115 +16,71 @@ body.spoken-splash {
 }
 
 .poet-pic {
-  /*position: absolute;*/
-  /*margin-left: 300px;*/
+  position: absolute;
+  margin-left: 300px;
   width: 180px;
   animation: shoot 10s cubic-bezier(0.99, 0.1, 1, 1) infinite;
-  animation-name: shoot, fade;
+  animation-name: shoot;
   border-radius: 50%;
-  font-size: 14px;
+  font-size: 16px;
+  color: white;
 }
-.poet-pic:nth-child(1) {
-  margin-top: -300px;
-  transform: translate(41vw, 74vh) rotate(45deg) scale(5);
-  animation-duration: 30s;
-  animation-delay: 0s;
-  animation-direction: alternate, reverse, normal;
-  top: 0;
-  left: 0;
-}
+
 .poet-pic:nth-child(2) {
-  transform: translate(41vw, 74vh) rotate(270deg) scale(5);
-  animation-duration: 30s;
-  animation-delay: -15s;
-  animation-direction: alternate, reverse, normal;
-  top: -150px;
-  left: -150px;
+  position: absolute;
+  top: 75px;
+  left: 500px;
+  animation: shoot 15s infinite;
+  animation-delay: 1s;
+  animation-direction: reverse;
+  z-index: 99;
 }
 .poet-pic:nth-child(3) {
-  transform: translate(39vw, 18vh) rotate(90deg) scale(5);
-  animation-duration: 30s;
-  animation-delay: -30s;
-  animation-direction: alternate, reverse, normal;
-  top: -150px;
-  left: -350px;
+  position: absolute;
+  top: 200px;
+  left: 100px;
+  animation: mymove 10s infinite;
+  animation-delay: -2s;
+  animation-direction: reverse alternate;
 }
 .poet-pic:nth-child(4) {
-  transform: translate(63vw, 96vh) scale(5);
-  animation-duration: 30s;
-  animation-delay: -45s;
-  animation-direction: alternate, reverse, normal;
-  top: -150px;
-  left: 175px;
+  position: relative;
+  top: 300px;
+  left: 200px;
+  animation: side2side 30s infinite;
+  animation-delay: 2s;
+  animation-direction: alternate;
 }
 .poet-pic:nth-child(5) {
-  transform: translate(23vw, 43vh) scale(5);
-  animation-duration: 30s;
-  animation-delay: -15s;
-  animation-direction: alternate, reverse, normal;
-  top: 50;
-  left: 15;
+  position: absolute;
+  top: 75px;
+  left: 500px;
+  animation: mymove 40s infinite;
+  animation-delay: 0;
+  animation-direction: alternate;
 }
 .poet-pic:nth-child(6) {
-  transform: translate(68vw, 89vh) rotate(-45deg) scale(5);
-  animation-duration: 30s;
-  animation-delay: -30s;
-  animation-direction: alternate, reverse, normal;
-  top: 0;
-  left: 100px;
+  position: absolute;
+  animation: side2side 30s infinite;
+  animation-delay: -5s;
+  animation-direction: alternate reverse;
+  top: 300px;
+  left: 1200px;
 }
-.poet-pic:nth-child(7) {
-  transform: translate(68vw, 89vh) rotate(-45deg) scale(5);
-  animation-duration: 30s;
-  animation-delay: -30s;
-  animation-direction: normal;
-  top: 0%;
-  left: 0%;
-}
+
 @keyframes shoot {
   0% {
     transform: translate(50vw, 50vh) scale(0.5);
   }
 }
 
-@keyframes moveAcross {
-    0% {
-        left: -90px;
-    }
-    100% {
-        left: 100%;
-    }
+@keyframes side2side {
+    0% { left: 0%; }
+    100% { left: 100%; }
 }
-
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
-  19% {
-    opacity: 0;
-  }
-  20% {
-    opacity: 0.25;
-  }
-  80% {
-    opacity: 0.8;
-  }
-  84% {
-    opacity: 0.44;
-  }
-  86% {
-    opacity: 0.88;
-  }
-  88% {
-    opacity: 0.45;
-  }
-  90% {
-    opacity: 0.9;
-  }
-  94% {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+@keyframes mymove {
+    0%   {top: 0px;}
+    25%  {top: 500px;}
+    75%  {top: 100px}
+    100% {top: 200px;}
 }

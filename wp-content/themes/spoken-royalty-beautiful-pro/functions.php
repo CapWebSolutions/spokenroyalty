@@ -39,11 +39,10 @@ function beautiful_enqueue_scripts_styles() {
 	wp_enqueue_script( 'beautiful-responsive-menu', get_bloginfo( 'stylesheet_directory' ) . '/js/responsive-menu.js', array( 'jquery' ), '1.0.0' );
 	wp_enqueue_style( 'dashicons' );
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,500', array(), CHILD_THEME_VERSION );
-	wp_enqueue_style( 'spoken-banner-style', get_stylesheet_directory_uri() . '/style-banner.css', array(), CHILD_THEME_VERSION );
-	wp_enqueue_style( 'spoken-splash-style', get_stylesheet_directory_uri() . '/style-splash.css', array(), CHILD_THEME_VERSION );
+	// wp_enqueue_style( 'spoken-banner-style', get_stylesheet_directory_uri() . '/style-banner.css', array(), CHILD_THEME_VERSION );
 	wp_enqueue_style( 'spoken-scripture-style', get_stylesheet_directory_uri() . '/style-scripture.css', array(), CHILD_THEME_VERSION );
-}
 
+}
 
 //* Add support for custom header
 add_theme_support( 'custom-header', array(
@@ -109,19 +108,19 @@ function beautiful_before_header() {
 	) );
 }
 
-add_action( 'genesis_before_header', 'beautiful_before_header_left_right' );
-function beautiful_before_header_left_right() {
+// add_action( 'genesis_before_header', 'beautiful_before_header_left_right' );
+// function beautiful_before_header_left_right() {
 
-	genesis_widget_area( 'before-header-left', array(
-		'before' => '<div class="before-header-container"><div class="before-header-left" class="widget-area"><div class="wrap">',
-		'after'  => '</div></div>',
-	) );
+// 	genesis_widget_area( 'before-header-left', array(
+// 		'before' => '<div class="before-header-container"><div class="before-header-left" class="widget-area"><div class="wrap">',
+// 		'after'  => '</div></div>',
+// 	) );
 
-	genesis_widget_area( 'before-header-right', array(
-		'before' => '<div class="before-header-right" class="widget-area"><div class="wrap">',
-		'after'  => '</div></div></div>',
-	) );
-}
+// 	genesis_widget_area( 'before-header-right', array(
+// 		'before' => '<div class="before-header-right" class="widget-area"><div class="wrap">',
+// 		'after'  => '</div></div></div>',
+// 	) );
+// }
 
 /* NEW *************************************************** */
 /* re: https://sridharkatakam.com/responsive-header-banner-image-beautiful-pro/ */
@@ -185,18 +184,17 @@ function cap_web_is_tree( $pid ) { // $pid = The ID of the page we're looking fo
 // Remove Site Title
 remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
 
-//* Hook welcome message widget area before content
-add_action( 'genesis_before_loop', 'beautiful_welcome_message' );
-function beautiful_welcome_message() {
+//* Hook welcome scripture message widget area before content on Home page
+add_action( 'genesis_before_content_sidebar_wrap', 'spoken_royalty_welcome_message' );
+function spoken_royalty_welcome_message() {
 
-	if ( ! is_front_page() || get_query_var( 'paged' ) >= 2 )
-		return;
+	if ( is_page( 'Home' ) ) {
 
-	genesis_widget_area( 'welcome-message', array(
-		'before' => '<div class="welcome-message" class="widget-area">',
-		'after'  => '</div>',
-	) );
-
+		genesis_widget_area( 'scripture-message', array(
+			'before' => '<div class="scripture-message" class="widget-area">',
+			'after'  => '</div>',
+		) );
+	}
 }
 
 //* Modify the WordPress read more link
@@ -250,35 +248,34 @@ function beautiful_comments_gravatar( $args ) {
 
 }
 
-//* Hook split sidebar and bottom sidebar widget areas below primary sidebar
-add_action( 'genesis_after_sidebar_widget_area', 'beautiful_extra_sidebars' );
-function beautiful_extra_sidebars() {
+//* Hook split sidebar areas below primary sidebar
+add_action( 'genesis_after_sidebar_widget_area', 'spoken_extra_sidebars' );
+function spoken_extra_sidebars() {
 
-	if ( is_active_sidebar( 'split-sidebar-left' ) || is_active_sidebar( 'split-sidebar-right' ) ) {
+	if ( is_active_sidebar( 'logged-out-sidebar' ) || is_active_sidebar( 'logged-in-sidebar' ) ) {
 
 		echo '<div class="split-sidebars">';
-//* left sidebar for all visitors		
-		if ( !is_page( '756' ) ) {
-				genesis_widget_area( 'split-sidebar-left', array(
-					'before' => '<div class="split-sidebar-left" class="widget-area">',
+
+		if ( !is_user_logged_in() ) {
+				genesis_widget_area( 'logged-out-sidebar', array(
+					'before' => '<div class="logged-out-sidebar" class="widget-area">',
+					'after'  => '</div>',
+			) );
+		}
+
+		if ( is_user_logged_in() ) {
+			if ( bp_is_user() ) {
+				// no logged-in-sidebar. need lots of space
+			} else {
+				genesis_widget_area( 'logged-in-sidebar', array(
+					'before' => '<div class="logged-in-sidebar" class="widget-area">',
 					'after'  => '</div>',
 				) );
-		} else {
-			return;
-		}
-//* right sidebar only for logged in users
-		if ( is_user_logged_in() ) {
-			genesis_widget_area( 'split-sidebar-right', array(
-				'before' => '<div class="split-sidebar-right" class="widget-area">',
-				'after'  => '</div>',
-			) );
+			}
 		}
 		echo '</div>';
 	}
-	genesis_widget_area( 'bottom-sidebar', array(
-		'before' => '<div class="bottom-sidebar" class="widget-area">',
-		'after'  => '</div>',
-	) );
+
 }
 
 //* Remove comment form allowed tags
@@ -298,55 +295,29 @@ genesis_register_sidebar( array(
 ) );
 
 genesis_register_sidebar( array(
-	'id'          => 'before-header-left',
-	'name'        => __( 'Before Header Left', 'beautiful' ),
-	'description' => __( 'This is the before header left widget area.', 'beautiful' ),
-) );
-genesis_register_sidebar( array(
-	'id'          => 'before-header-right',
-	'name'        => __( 'Before Header Right', 'beautiful' ),
-	'description' => __( 'This is the before header right widget area.', 'beautiful' ),
+	'id'          => 'scripture-message',
+	'name'        => __( 'Welcome Scripture Message', 'beautiful' ),
+	'description' => __( 'This is the welcome scripture message widget area.', 'beautiful' ),
 ) );
 
 genesis_register_sidebar( array(
-	'id'          => 'welcome-message',
-	'name'        => __( 'Welcome Message', 'beautiful' ),
-	'description' => __( 'This is the welcome message widget area.', 'beautiful' ),
-) );
-// genesis_register_sidebar( array(
-// 	'id'          => 'split-sidebar-left',
-// 	'name'        => __( 'Split Sidebar Left', 'beautiful' ),
-// 	'description' => __( 'This is the left split sidebar widget area.', 'beautiful' ),
-// ) );
-genesis_register_sidebar( array(
-	'id'          => 'split-sidebar-right',
-	'name'        => __( 'Split Sidebar Right', 'beautiful' ),
-	'description' => __( 'This is the right split sidebar widget area.', 'beautiful' ),
+	'id'          => 'logged-in-sidebar',
+	'name'        => __( 'Logged-in sidebar', 'beautiful' ),
+	'description' => __( 'This is the right sidebar displayed for logged in users.', 'beautiful' ),
 ) );
 genesis_register_sidebar( array(
-	'id'          => 'bottom-sidebar',
-	'name'        => __( 'Bottom Sidebar', 'beautiful' ),
-	'description' => __( 'This is the bottom sidebar widget area.', 'beautiful' ),
+	'id'          => 'logged-out-sidebar',
+	'name'        => __( 'Logged-out Sidebar', 'beautiful' ),
+	'description' => __( 'This is the right sidebar displayed for logged out users.', 'beautiful' ),
 ) );
-
 
 // remove default sorting dropdown
- 
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 
 // Removes showing results
- 
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 
-//* Remove page titles site wide (posts & pages)
-// remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
-// remove_action( 'genesis_post_title', 'genesis_do_post_title' );
 
-// add_action( 'get_header', 'remove_titles_from_pages', 9 );
-function remove_titles_from_pages() {
-    if ( is_page(array('location', 'townhome-living', 'multi-family-living', 'contact-us') ) ) {
-        remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
-    }
-
+if ( ! isset( $content_width ) ) {
+	$content_width = 800;
 }
-
