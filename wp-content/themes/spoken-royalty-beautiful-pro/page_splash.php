@@ -68,7 +68,7 @@ remove_action( 'genesis_footer', 'genesis_footer_markup_close', 15 );
 //* Dump out poet pics content. Pulling everything from media library.
 //* Future: go through an array of custom fields specifying images. Enables client to modify from dashboard. 
 
-	$poet_pics_dir = wp_upload_dir()[baseurl];
+	$poet_pics_dir = wp_upload_dir()['baseurl'];
 	echo '<div class="splash-wrap">';
 	printf('<center><button style="margin-top:20px;"><a style="color:#fff;" href="%s/home">Enter Site</a></button></center>',get_bloginfo( 'url' ));
 	// printf('<div style="margin-left: 100px;"><img class="size-medium wp-image-326" src="%s/maya-angelou1-229x300.jpg" alt="" width="229" height="300" /><br>Maya Angelou</div>',$poet_pics_dir);

@@ -43,7 +43,7 @@ function display_poet_diary(){
 		<iframe src="https://www.youtube.com/embed/XQu8TTBmGhA?rel=0&amp;controls=0&amp;showinfo=0" width="640" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe><?php
 	} else { 
 		?><strong>No favorite media identified.</strong><br>Displaying placeholder.<br><?php
-		$my_dir = wp_upload_dir()[baseurl];
+		$my_dir = wp_upload_dir()['baseurl'];
 		printf('<img class="alignnone size-full wp-image-905" src="%s/rtMedia/users/1/07_fuzsions_Logo_RGB-800x800.png" alt="" width="300" height="300" />',$my_dir);
 	}
 	?>
