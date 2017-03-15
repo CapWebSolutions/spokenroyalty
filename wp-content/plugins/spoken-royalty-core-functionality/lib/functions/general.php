@@ -292,3 +292,15 @@ function cd_custom_404() {
 		get_template_part( '/partials/sitemap' ); // Plop in our customized sitemap code
 	}
 }
+
+
+// Add the filter and function, returning the widget title only if the first character is not "!"
+// Author: Stephen Cronin
+// Author URI: http://www.scratch99.com/
+add_filter( 'widget_title', 'remove_widget_title' );
+function remove_widget_title( $widget_title ) {
+	if ( substr ( $widget_title, 0, 1 ) == '!' )
+		return;
+	else 
+		return ( $widget_title );
+}
