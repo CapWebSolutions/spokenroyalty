@@ -21,24 +21,22 @@ function cap_web_footer_back_to_top( $atts ) {
 
 
 // add_filter('genesis_footer_creds_text', 'bsg_footer_creds_filter');
-
 function bsg_footer_creds_filter( $creds ) {
-    $rel = is_front_page() ? '' : 'rel="nofollow"';
-  	$creds = '<center>Copyright [footer_copyright first="2016"] Spoken Royalty &middot; ';
-    $creds .= "Website by <a {$rel} href=\"https://capwebsolutions.com/\">Cap Web Solutions</a></center>";
-    return $creds;
+	$rel = is_front_page() ? '' : 'rel="nofollow"';
+		$creds = '<center>Copyright [footer_copyright first="2016"] Spoken Royalty &middot; ';
+	$creds .= "Website by <a {$rel} href=\"https://capwebsolutions.com/\">Cap Web Solutions</a></center>";
+	return $creds;
 }
 
-// Set up split custom footer 
+// Set up split custom footer
 // Ref: https://sridharkatakam.com/split-footer-genesis/
-
 add_shortcode( 'sitename', 'capweb_site_name' );
 function capweb_site_name() {
 	return '<a href="' . get_bloginfo( 'url' ) . '" title="' . get_bloginfo( 'sitename' ) . '">' . get_bloginfo( 'name' ) . '</a>';
 }
 
-//* Change the footer text
-add_filter('genesis_footer_creds_text', 'cap_web_footer_creds_filter');
+// * Change the footer text
+add_filter( 'genesis_footer_creds_text', 'cap_web_footer_creds_filter' );
 function cap_web_footer_creds_filter( $creds ) {
 	$creds = '
 	<div class="alignleft">
@@ -53,5 +51,5 @@ function cap_web_footer_creds_filter( $creds ) {
 	</div>
 	
 	';
-	return $creds;	
+	return $creds;
 }

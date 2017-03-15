@@ -23,7 +23,7 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 	$meta_boxes[] = array(
 		'id'         => 'test_metabox',
 		'title'      => 'Test Metabox',
-		'pages'      => array( 'page', ), // Post type
+		'pages'      => array( 'page' ), // Post type
 		'context'    => 'normal',
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
@@ -81,7 +81,7 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 	            'desc' => 'field description (optional)',
 	            'id'   => $prefix . 'test_colorpicker',
 	            'type' => 'colorpicker',
-				'std'  => '#ffffff'
+				'std'  => '#ffffff',
 	        ),
 			array(
 				'name' => 'Test Text Area',
@@ -113,9 +113,9 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 				'id'      => $prefix . 'test_select',
 				'type'    => 'select',
 				'options' => array(
-					array( 'name' => 'Option One', 'value' => 'standard', ),
-					array( 'name' => 'Option Two', 'value' => 'custom', ),
-					array( 'name' => 'Option Three', 'value' => 'none', ),
+					array( 'name' => 'Option One', 'value' => 'standard' ),
+					array( 'name' => 'Option Two', 'value' => 'custom' ),
+					array( 'name' => 'Option Three', 'value' => 'none' ),
 				),
 			),
 			array(
@@ -124,9 +124,9 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 				'id'      => $prefix . 'test_radio_inline',
 				'type'    => 'radio_inline',
 				'options' => array(
-					array( 'name' => 'Option One', 'value' => 'standard', ),
-					array( 'name' => 'Option Two', 'value' => 'custom', ),
-					array( 'name' => 'Option Three', 'value' => 'none', ),
+					array( 'name' => 'Option One', 'value' => 'standard' ),
+					array( 'name' => 'Option Two', 'value' => 'custom' ),
+					array( 'name' => 'Option Three', 'value' => 'none' ),
 				),
 			),
 			array(
@@ -135,9 +135,9 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 				'id'      => $prefix . 'test_radio',
 				'type'    => 'radio',
 				'options' => array(
-					array( 'name' => 'Option One', 'value' => 'standard', ),
-					array( 'name' => 'Option Two', 'value' => 'custom', ),
-					array( 'name' => 'Option Three', 'value' => 'none', ),
+					array( 'name' => 'Option One', 'value' => 'standard' ),
+					array( 'name' => 'Option Two', 'value' => 'custom' ),
+					array( 'name' => 'Option Three', 'value' => 'none' ),
 				),
 			),
 			array(
@@ -176,7 +176,7 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 				'desc'    => 'field description (optional)',
 				'id'      => $prefix . 'test_wysiwyg',
 				'type'    => 'wysiwyg',
-				'options' => array(	'textarea_rows' => 5, ),
+				'options' => array(	'textarea_rows' => 5 ),
 			),
 			array(
 				'name' => 'Test Image',
@@ -190,11 +190,11 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 	$meta_boxes[] = array(
 		'id'         => 'about_page_metabox',
 		'title'      => 'About Page Metabox',
-		'pages'      => array( 'page', ), // Post type
+		'pages'      => array( 'page' ), // Post type
 		'context'    => 'normal',
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
-		'show_on'    => array( 'key' => 'id', 'value' => array( 2, ), ), // Specific post IDs to display this metabox
+		'show_on'    => array( 'key' => 'id', 'value' => array( 2 ) ), // Specific post IDs to display this metabox
 		'fields' => array(
 			array(
 				'name' => 'Test Text',
@@ -202,11 +202,10 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 				'id'   => $prefix . 'test_text',
 				'type' => 'text',
 			),
-		)
+		),
 	);
 
 	// Add other metaboxes as needed
-
 	return $meta_boxes;
 }
 
@@ -216,7 +215,8 @@ add_action( 'init', 'cmb_initialize_cmb_meta_boxes', 9999 );
  */
 function cmb_initialize_cmb_meta_boxes() {
 
-	if ( ! class_exists( 'cmb_Meta_Box' ) )
+	if ( ! class_exists( 'cmb_Meta_Box' ) ) {
 		require_once 'init.php';
+	}
 
 }

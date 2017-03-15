@@ -1,6 +1,6 @@
 <?php
 /**
- * BuddyPress Tweaks 
+ * BuddyPress Tweaks
  *
  * This file includes any custom WooCommerce tweaks
  *
@@ -14,9 +14,9 @@
 
 
 function spoken_royalty_xprofile_cover_image( $settings = array() ) {
-    $settings['width']  = 900;
-    $settings['height'] = 1000;
- 
-    return $settings;
+	$settings['width']  = 900;
+	$settings['height'] = 1000;
+
+	return $settings;
 }
 add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'spoken_royalty_xprofile_cover_image', 10, 1 );

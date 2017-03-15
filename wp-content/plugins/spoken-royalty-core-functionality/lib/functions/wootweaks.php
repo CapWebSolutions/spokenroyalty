@@ -1,6 +1,6 @@
 <?php
 /**
- * WooCommerce Tweaks 
+ * WooCommerce Tweaks
  *
  * This file includes any custom WooCommerce tweaks
  *
@@ -12,17 +12,17 @@
  * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
- namespace SpokenRoyaltyCore;
+	namespace SpokenRoyaltyCore;
 /*
  * wc_remove_related_products
- * 
+ *
  * Clear the query arguments for related products so none show.
- * Add this code to your theme functions.php file.  
+ * Add this code to your theme functions.php file.
  */
 function wc_remove_related_products( $args ) {
 	return array();
 }
-add_filter('woocommerce_related_products_args','wc_remove_related_products', 10); 
+add_filter( 'woocommerce_related_products_args','wc_remove_related_products', 10 );
 
 /**
  * woo_hide_page_title
@@ -30,12 +30,12 @@ add_filter('woocommerce_related_products_args','wc_remove_related_products', 10)
  * Removes the "shop" title on the main shop page
  *
  * @access      public
- * @since       1.0 
+ * @since       1.0
  * @return      void
-*/
+ */
 function woo_hide_page_title() {
-	
+
 	return false;
-	
+
 }
 add_filter( 'woocommerce_show_page_title' , 'woo_hide_page_title' );
