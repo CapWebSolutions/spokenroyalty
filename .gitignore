@@ -133,6 +133,6 @@ Thumbs.db
 
 # track these mu-plugins, plugins, and themes
 # add your own entries here
-!wp-content/plugins/spoken-royalty-core-functionality/
+!wp-content/mu-plugins/spoken-royalty-core-functionality/
 !wp-content/themes/boostrap-genesis/
-!wp-content/themes/spoken-royalty-beautiful-pro
+!wp-content/themes/spoken-royalty
