@@ -68,7 +68,7 @@ remove_action( 'genesis_footer', 'genesis_footer_markup_close', 15 );
 
 	$poet_pics_dir = wp_upload_dir()['baseurl'];
 	echo '<div class="move-wrap">';
-	printf('<center><button style="margin-top:20px;"><a style="color:#fff;" href="%s/home">Enter Site</a></button></center><br />',get_bloginfo( 'url' ));
+	printf('<center><button style="margin-top:20px;z-index: 9999 !important"><a style="color:#fff;" href="%s/home">Enter Site</a></button></center><br />',get_bloginfo( 'url' ));
 	// printf('<div class="diagonally1"><img src="%s/maya-angelou1.jpg" alt=""/><br>Maya Angelou</div>',$poet_pics_dir);
 	// printf('<div class="diagonally2"><img src="%s/Emily_Dickinson_.jpg" alt="" /><br>Emily Dickinson</div>',$poet_pics_dir);
 	// printf('<div class="diagonally1"><img src="%s/Langston-Huges-.jpg" alt=""  /><br>Langston Huges</div>',$poet_pics_dir);

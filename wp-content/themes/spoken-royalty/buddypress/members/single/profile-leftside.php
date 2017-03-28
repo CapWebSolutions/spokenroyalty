@@ -6,12 +6,6 @@
  * @subpackage bp-legacy
  */
 
-
-
-// create_poet_profile_left_side();
-
-// function create_poet_profile_left_side() {
-
 // Setup the Query arguments
 		$args = array( 
 			'post_status'	=> 'publish',
@@ -19,34 +13,51 @@
 			'order'			=> 'DESC',
 			'author'		=> bp_displayed_user_id (),
 			);
-   
-// the query
-$the_gallery_query = new MPP_Gallery_Query( $args ); 
-// var_dump($the_gallery_query); 
-var_dump($the_gallery_query->have_galleries());
 
+ 		$media_args = array( 
+			'post_status'	=> 'publish',
+			'orderby'		=> 'date',
+			'order'			=> 'DESC',
+			'author'		=> bp_displayed_user_id (),
+			);  
+
+// The Gallery Query
+$the_gallery_query = new MPP_Gallery_Query( $args );
+
+// The Media Query
+$the_media_query = new MPP_Media_Query( $media_args );
+
+// The Loop
 if ( $the_gallery_query->have_galleries() ) {
-		echo '<strong>Media pieces.</strong><br/>';
-    while( $the_gallery_query->have_galleries() ) : $the_gallery_query->the_gallery(); 
-        var_dump( $the_gallery_query->the_gallery() );
-        echo '<h2>' . mpp_get_gallery_title() . '</h2>';
-    endwhile; // end of loop
-
-    mpp_reset_gallery_data();
-} else { 
-		$my_dir = wp_upload_dir()['baseurl'];
-		echo '<br /><br />';
-		printf('<img class="alignnone size-full wp-image-905" src="%s/rtMedia/users/1/07_fuzsions_Logo_RGB-800x800.png" alt="" width="300" height="300" />',$my_dir);
-}
-
-    // $favorite_media_piece_exists = mt_rand(0, 1);
-	// if ( $favorite_media_piece_exists ) {
-
-	// 	<iframe src="https://www.youtube.com/embed/XQu8TTBmGhA?rel=0&amp;controls=0&amp;showinfo=0" width="640" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-	// } else { 
-	// 	$my_dir = wp_upload_dir()['baseurl'];
-	// 	echo '<br /><br />';
-	// 	printf('<img class="alignnone size-full wp-image-905" src="%s/rtMedia/users/1/07_fuzsions_Logo_RGB-800x800.png" alt="" width="300" height="300" />',$my_dir);
+	echo '<h3>My Favorite Media</h3>';
+	// while ( $the_gallery_query->have_galleries() ) {
+		$the_gallery_query->the_gallery();
+		echo 'Gallery: <strong>' . mpp_get_gallery_title() . "</strong><br />";
+	// while ( $the_media_query->have_media() ) {
+		$the_media_query->the_media();
+		echo 'Title: <strong>' . mpp_get_media_title() . "</strong><br />";
+		$my_type = mpp_get_media_type();
+		mpp_load_media_view();
+		// switch( $my_type ) {
+		// 	case 'video':
+		// 	mpp_load_media_view();
+		// 	break;
+		// 	case 'audio':
+		// 	mpp_load_media_view();
+		// 	break;
+		// 	case 'photo':
+		// 	mpp_load_media_view();
+		// 	break;
+		// }
 	// }
-    // return;
-// }
+	echo '</ul>';
+	/* Restore original media data */
+mpp_reset_media_data();
+
+	// }
+	echo '</ul>';
+} else {
+	// no posts found
+}
+/* Restore original gallery/post data */
+mpp_reset_gallery_data();
