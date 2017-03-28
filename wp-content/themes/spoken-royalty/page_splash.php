@@ -67,20 +67,21 @@ remove_action( 'genesis_footer', 'genesis_footer_markup_close', 15 );
 //* Future: go through an array of custom fields specifying images. Enables client to modify from dashboard. 
 
 	$poet_pics_dir = wp_upload_dir()['baseurl'];
-	echo '<div class="splash-wrap">';
-	printf('<center><button style="margin-top:20px;"><a style="color:#fff;" href="%s/home">Enter Site</a></button></center>',get_bloginfo( 'url' ));
-	// printf('<div style="margin-left: 100px;"><img class="size-medium wp-image-326" src="%s/maya-angelou1-229x300.jpg" alt="" width="229" height="300" /><br>Maya Angelou</div>',$poet_pics_dir);
-	printf('<div class="poet-pic"><img class="size-medium wp-image-326" src="%s/maya-angelou1-229x300.jpg" alt="" width="229" height="300" /><br>Maya Angelou</div>',$poet_pics_dir);
-	// printf('<div style="margin-left: 800px;margin-top:-500px;"><img class="size-full wp-image-324" src="%s/Emily_Dickinson_.jpg" alt="" width="582" height="685" /><br>Emily Dickinson</div>',$poet_pics_dir);
-	printf('<div class="poet-pic"><img class="size-full wp-image-324" src="%s/Emily_Dickinson_.jpg" alt="" width="582" height="685" /><br>Emily Dickinson</div>',$poet_pics_dir);
-	// printf('<div style="margin-left: 390px;margin-top:-829px;"><img class="size-full wp-image-325" src="%s/Langston-Huges-.jpg" alt="" width="400" height="400" /><br>Langston Huges</div>',$poet_pics_dir);
-	printf('<div class="poet-pic"><img class="size-full wp-image-325" src="%s/Langston-Huges-.jpg" alt="" width="400" height="400" /><br>Langston Huges</div>',$poet_pics_dir);
-	// printf('<div style="margin-left: 33px;margin-top:-314px;"><img class="size-full wp-image-327" src="%s/Sylvia_Plath.jpg" alt="" width="288" height="386"  /><br>Sylvia Plath</div>',$poet_pics_dir);
-	printf('<div class="poet-pic"><img class="size-full wp-image-327" src="%s/Sylvia_Plath.jpg" alt="" width="288" height="386"  /><br>Sylvia Plath</div>',$poet_pics_dir);
-	// printf('<div style="margin-left: 519px;margin-top:-636px;"><img class="size-medium wp-image-329" src="%s/william-shakespeare-portrait-269x300.jpg" alt="" width="269" height="300" /><br>William Shakespeare</div>',$poet_pics_dir);
-	printf('<div class="poet-pic"><img class="size-medium wp-image-329" src="%s/william-shakespeare-portrait-269x300.jpg" alt="" width="269" height="300" /><br>William Shakespeare</div>',$poet_pics_dir);
-	// printf('<div style="margin-left: 1029px;margin-top:-389px;"><img class="size-full wp-image-328" src="%s/William-Wordsworth.jpg" alt="" width="286" height="289" /><br>William Wordsworth</div>',$poet_pics_dir);
-	printf('<div class="poet-pic"><img class="size-full wp-image-328" src="%s/William-Wordsworth.jpg" alt="" width="286" height="289" /><br>William Wordsworth</div>',$poet_pics_dir);
+	echo '<div class="move-wrap">';
+	printf('<center><button style="margin-top:20px;"><a style="color:#fff;" href="%s/home">Enter Site</a></button></center><br />',get_bloginfo( 'url' ));
+	// printf('<div class="diagonally1"><img src="%s/maya-angelou1.jpg" alt=""/><br>Maya Angelou</div>',$poet_pics_dir);
+	// printf('<div class="diagonally2"><img src="%s/Emily_Dickinson_.jpg" alt="" /><br>Emily Dickinson</div>',$poet_pics_dir);
+	// printf('<div class="diagonally1"><img src="%s/Langston-Huges-.jpg" alt=""  /><br>Langston Huges</div>',$poet_pics_dir);
+	// printf('<div class="diagonally2"><img src="%s/Sylvia_Plath.jpg" alt="" /><br>Sylvia Plath</div>',$poet_pics_dir);
+	// printf('<div class="diagonally1"><img src="%s/william-shakespeare-portrait.jpg" alt=""/><br>William Shakespeare</div>',$poet_pics_dir);
+	// printf('<div class="diagonally2"><img src="%s/William-Wordsworth.jpg" alt=""/><br>William Wordsworth</div>',$poet_pics_dir);
+	printf('<div class="horizontally-lr"><img src="%s/poet-lady.jpg" alt="" /></div>',$poet_pics_dir);
+	printf('<div class="vertically"><img src="%s/poet-mayaangelou.jpg" alt="" /></div>',$poet_pics_dir); 
+	printf('<div class="diagonally2"><img src="%s/poet-giovanni.jpg" alt="" /></div>',$poet_pics_dir); 
+	printf('<div class="horizontally-rl"><img src="%s/poet-williamwordsworth.png" alt="" /></div>',$poet_pics_dir); 
+	printf('<div class="diagonally1"><img src="%s/poet-lh.png" alt="" /></div>',$poet_pics_dir);
+	printf('<div class="vertically2"><img src="%s/poet-williamshakespeare.jpg" alt=""/></div>',$poet_pics_dir);
+
 	echo '</div>';
 
 //* Run the Genesis loop

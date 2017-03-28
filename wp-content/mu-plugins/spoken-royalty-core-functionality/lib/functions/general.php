@@ -274,7 +274,7 @@ add_filter( 'login_redirect', 'spokenroyalty_login_redirect', 10, 3 );
  */
 add_action( 'get_header', 'remove_titles_from_pages' );
 function remove_titles_from_pages() {
-    if ( is_page(array('about') ) ) {
+    if ( is_page(array('about', 'main') ) ) {
         remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
     }
 }
