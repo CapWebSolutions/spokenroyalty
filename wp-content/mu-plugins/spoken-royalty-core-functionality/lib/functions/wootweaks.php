@@ -12,7 +12,7 @@
  * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
-	namespace SpokenRoyaltyCore;
+
 /*
  * wc_remove_related_products
  *
@@ -34,8 +34,6 @@ add_filter( 'woocommerce_related_products_args','wc_remove_related_products', 10
  * @return      void
  */
 function woo_hide_page_title() {
-
 	return false;
-
 }
 add_filter( 'woocommerce_show_page_title' , 'woo_hide_page_title' );

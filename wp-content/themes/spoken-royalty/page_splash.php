@@ -67,22 +67,19 @@ remove_action( 'genesis_footer', 'genesis_footer_markup_close', 15 );
 //* Future: go through an array of custom fields specifying images. Enables client to modify from dashboard. 
 
 	$poet_pics_dir = wp_upload_dir()['baseurl'];
-	echo '<div class="move-wrap">';
+	echo '<div class="move-wrap-button">';
 	printf('<center><button style="margin-top:20px;z-index: 9999 !important"><a style="color:#fff;" href="%s/home">Enter Site</a></button></center><br />',get_bloginfo( 'url' ));
-	// printf('<div class="diagonally1"><img src="%s/maya-angelou1.jpg" alt=""/><br>Maya Angelou</div>',$poet_pics_dir);
-	// printf('<div class="diagonally2"><img src="%s/Emily_Dickinson_.jpg" alt="" /><br>Emily Dickinson</div>',$poet_pics_dir);
-	// printf('<div class="diagonally1"><img src="%s/Langston-Huges-.jpg" alt=""  /><br>Langston Huges</div>',$poet_pics_dir);
-	// printf('<div class="diagonally2"><img src="%s/Sylvia_Plath.jpg" alt="" /><br>Sylvia Plath</div>',$poet_pics_dir);
-	// printf('<div class="diagonally1"><img src="%s/william-shakespeare-portrait.jpg" alt=""/><br>William Shakespeare</div>',$poet_pics_dir);
-	// printf('<div class="diagonally2"><img src="%s/William-Wordsworth.jpg" alt=""/><br>William Wordsworth</div>',$poet_pics_dir);
-	printf('<div class="horizontally-lr"><img src="%s/poet-lady.jpg" alt="" /></div>',$poet_pics_dir);
-	printf('<div class="vertically"><img src="%s/poet-mayaangelou.jpg" alt="" /></div>',$poet_pics_dir); 
-	printf('<div class="diagonally2"><img src="%s/poet-giovanni.jpg" alt="" /></div>',$poet_pics_dir); 
-	printf('<div class="horizontally-rl"><img src="%s/poet-williamwordsworth.png" alt="" /></div>',$poet_pics_dir); 
-	printf('<div class="diagonally1"><img src="%s/poet-lh.png" alt="" /></div>',$poet_pics_dir);
-	printf('<div class="vertically2"><img src="%s/poet-williamshakespeare.jpg" alt=""/></div>',$poet_pics_dir);
+	echo '</div><div class="move-wrap">';
+	printf('<div class="horizontally-lr"><img src="%s/poet-lady.jpg" alt="" width="850" height="600" class="alignnone size-full wp-image-1027" srcset="%s/poet-lady.jpg 850w, %s/poet-lady-300x212.jpg 300w, %s/poet-lady-768x542.jpg 768w" sizes="(max-width: 850px) 100vw, 850px"></div>',$poet_pics_dir, $poet_pics_dir, $poet_pics_dir, $poet_pics_dir);
+	printf('<div class="vertically"><img src="%s/poet-mayaangelou.jpg" alt="" width="800" height="600" class="alignnone size-full wp-image-1032" srcset="%s/poet-mayaangelou.jpg 800w, %s/poet-mayaangelou-300x225.jpg 300w, %s/poet-mayaangelou-768x576.jpg 768w" sizes="(max-width: 800px) 100vw, 800px"></div>',$poet_pics_dir, $poet_pics_dir, $poet_pics_dir, $poet_pics_dir); 
+	printf('<div class="diagonally2"><img src="%s/poet-giovanni.jpg" alt="" width="800" height="600" class="alignnone size-full wp-image-1031" srcset="%s/poet-giovanni.jpg 800w, %s/poet-giovanni-300x225.jpg 300w, %s/poet-giovanni-768x576.jpg 768w" sizes="(max-width: 800px) 100vw, 800px"></div>',$poet_pics_dir, $poet_pics_dir, $poet_pics_dir, $poet_pics_dir); 
+	printf('<div class="horizontally-rl"><img src="%s/poet-williamwordsworth.jpg" alt="" width="600" height="731" srcset="%s/poet-williamwordsworth.jpg 600w, %s/poet-williamwordsworth-246x300.jpg 246w" sizes="(max-width: 600px) 100vw, 600px"></div>',$poet_pics_dir, $poet_pics_dir, $poet_pics_dir, $poet_pics_dir); 
+	printf('<div class="diagonally1"><img src="%s/poet-lh.jpg" alt="" width="948" height="600" class="alignnone size-full wp-image-1029" srcset="%s/poet-lh.jpg 948w, %s/poet-lh-300x225.jpg 300w, %s/poet-lh-768x576.jpg 768w" sizes="(max-width: 948px) 100vw, 948px"></div>',$poet_pics_dir, $poet_pics_dir, $poet_pics_dir, $poet_pics_dir);
+	printf('<div class="vertically2"><img src="%s/poet-williamshakespeare.jpg" alt="" width="718" height="800" class="alignnone size-full wp-image-1028" srcset="%s/poet-williamshakespeare.jpg 718w, %s/poet-williamshakespeare-269x300.jpg 269w" sizes="(max-width: 718px) 100vw, 718px"></div>',$poet_pics_dir, $poet_pics_dir, $poet_pics_dir, $poet_pics_dir);
 
 	echo '</div>';
 
 //* Run the Genesis loop
 genesis();
+
+

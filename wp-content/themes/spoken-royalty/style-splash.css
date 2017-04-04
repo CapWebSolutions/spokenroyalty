@@ -1,21 +1,28 @@
-.move-wrap:before {
+.move-wrap:before,
+.move-wrap-button:before {
 	content: " ";
 	display: table;
 }
 
-.move-wrap:after {
+.move-wrap:after,
+.move-wrap-button:after {
 	clear: both;
 	content: " ";
 	display: table;
 }
 
+.move-wrap-button {
+ background-color: #000;
+ overflow: hidden;
+ position: relative;
+}
 .move-wrap {
  background-color: #000;
  height: 1000px;	
  overflow: hidden;
  position: relative;
 }
-
+ 
 .diagonally1 {
  position: absolute;
  width: 100%;

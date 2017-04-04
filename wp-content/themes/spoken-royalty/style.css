@@ -5,7 +5,7 @@
 	Author: StudioPress / Cap Web Solutions
 	Author URI: http://capwebsolutions.com/
 	
-	Version: 1.0.6
+	Version: 1.0.7.1
 
 	Template: genesis
 	Template Version: 2.1
@@ -628,18 +628,19 @@ Structure and Layout
 	height: 100px;
 	background: red;
 }
-/* Poet Book */
-.page-id-756 .entry-content,
-.page-id-926 .entry-content,
-.page-id-927 .entry-content {
-	/*background-image:url("images/open-book-pic.jpg"); */
-	background-image:url("images/open-book-pic-2.jpg"); 
-	background-repeat: no-repeat;
-	background-position: 0% 30%;
-	width: 900px;
-	height: 1000px;
-	margin-top: 30px;
+/* Poet Book for Member Profile */
+
+.poet-book-background {
+	background-repeat:no-repeat;
+	background-position:0% 30%;
+	background-color: #fff;
+	background-image: inherit;
+	background-size: contain;
+	/*width: 900px;*/
+	height: 600px;
+	margin-top: 20px;
 }
+
 .one-half.book-left,
 .one-half.book-right {
 	width: 40%;
@@ -648,19 +649,19 @@ Structure and Layout
 .one-half.book-left-profile,
 .one-half.book-right-profile {
 	width: 35%;
-	margin-top: 65px;
-    margin-left: 100px;
+	margin-top: 80px;
+    margin-left: 70px;
+	/*margin-top: 65px;   -- used without contain -size
+    margin-left: 100px;*/
 }
 .one-half.book-left {
 	clear: both;
-	margin-left: 70px;
+	margin-left: 80px;
 }
 .one-half.book-left-profile {
 	clear: both;
-	margin-left: 100px;
+	margin-left: 80px;
 }
-/*.one-half.book-right {
-}*/
 
 .first {
 	clear: both;
@@ -957,17 +958,47 @@ a.bp-title-button,
 #signup_submit a, 
 #buddypress .standard-form div.submit a {
 	color: #fff !important;
-	background-color: #9B6E13;
-	background: #9b6e13 !important;
+	background-color: #9B6E13 !important;
 	border: none !important;
-    border-radius: 3px !important;
-	font-size: inherit !important;
-	}
+    border-radius: 3px;
+}
 
 #buddypress .standard-form div.submit:hover {
-	color: #fff;
 	background-color: #ebbc5c;
-	}
+}
+
+#buddypress .generic-button a,
+#buddypress a.button, 
+#buddypress ul.button-nav li a {
+    padding: 0px 10px !important;
+    font-size: 80% !important;
+}
+/* Buddypress add Friend Buttons will be black text on white background */
+
+#buddypress a.friendship-button.not_friends {
+    padding: 0px 10px !important;
+    font-size: 80% !important;
+    color: #000 !important;
+    background: #fff !important;
+}
+
+/*#buddypress .generic-button a, 
+#buddypress .standard-form button, 
+#buddypress a.button, 
+#buddypress input[type=button], 
+#buddypress input[type=reset], 
+#buddypress input[type=submit], 
+#buddypress ul.button-nav li a, 
+a.bp-title-button,
+.friendship-button not_friends add a,
+#friendship-button a {
+    padding: 0px 10px !important;
+    font-size: 80% !important;
+    color: #000 !important;
+    background: #fff !important;
+    border: none !important;
+    border-radius: 3px !important;
+}*/
 
 .mce-toolbar .mce-ico,
 .mce-menubar .mce-menubtn button span {
@@ -982,6 +1013,9 @@ a.bp-title-button,
 .mce-toolbar .mce-btn i {
     background-color: transparent !important;
 }
+
+
+
 /* Genesis eNews Extended
 --------------------------------------------- */
 
@@ -1191,16 +1225,6 @@ Site Header
 .site-header-banner .wrap .widget-title {
 	color: #fff;
 }
-
-@media only screen and (max-width: 1024px) {
-
-
-
-}
-
-
-
-
 
 /* Title Area
 --------------------------------------------- */

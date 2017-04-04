@@ -52,6 +52,7 @@ class spokenroyalty_Settings extends Genesis_Admin_Boxes {
 		// Set the default values
 		$default_settings = array(
 			'sr_scripture_text' => 'Matt 1:2 Default Scripture Passage',
+			'sr_poet_diary_bg_image' => '/wp-content/themes/spokenroyalty/images/open-poet-diary.jpg',
 			'sr_copyright' => 'My Name, All Rights Reserved',
 			'sr_credit' => 'Website by Cap Web Solutions',
 			);
@@ -67,10 +68,7 @@ class spokenroyalty_Settings extends Genesis_Admin_Boxes {
 	 * Upload the Javascripts for the media uploader
 	 */
 	public function upload_scripts() {
-
-
 	}
-	
 	
 	/** 
 	 * Set up Sanitization Filters
@@ -83,6 +81,9 @@ class spokenroyalty_Settings extends Genesis_Admin_Boxes {
 		genesis_add_option_filter( 'safe_html', $this->settings_field,
 			array(
 				'sr_scripture_text',
+				'sr_poet_diary_bg_image',
+				'sr_copyright',
+				'sr_credit',
 			) );
 	}
 	
@@ -91,7 +92,8 @@ class spokenroyalty_Settings extends Genesis_Admin_Boxes {
 	 * @since 1.0.0
 	 */
 	function metaboxes() {
-		add_meta_box('spokenroyalty_scripture_text_metabox', 'Scripture Text', array( $this, 'spokenroyalty_scripture_text_metabox' ), $this->pagehook, 'main', 'high');
+		add_meta_box('sr_scripture_text_metabox', 'Scripture Text', array($this, 'sr_scripture_text_metabox' ), $this->pagehook, 'main', 'high');
+		add_meta_box('sr_poet_diary_bg_image_metabox', 'Poet Diary Background Image', array( $this, 'sr_poet_diary_bg_image_metabox' ), $this->pagehook, 'main', 'high');
 	}
 	
 	
@@ -99,13 +101,23 @@ class spokenroyalty_Settings extends Genesis_Admin_Boxes {
 	 * Scripture Text Metabox
 	 * @since 1.0.0
 	 */
-	function spokenroyalty_scripture_text_metabox() {
+	function sr_scripture_text_metabox() {
 	
-	echo '<p><strong>Scripture Text:</strong></p>';
+	// echo '<p><strong>Scripture Text:</strong></p>';
 	echo '<p><input type="text" name="' . $this->get_field_name( 'sr_scripture_text' ) . '" id="' . $this->get_field_id( 'sr_scripture_text' ) . '" value="' . esc_attr( $this->get_field_value( 'sr_scripture_text' ) ) . '" size="150" /></p>';
 
 	}
+	/**
+	 * Poet Diary Background Image Metabox
+	 * @since 1.0.0
+	 */
+	function sr_poet_diary_bg_image_metabox() {
 	
+	// echo '<p><strong>Post Diary Background Image:</strong></p>';
+	echo '<p><strong>Image URL:</strong> <em>size: 900 x 600px</em></p>';
+	echo '<p><input type="text" name="' . $this->get_field_name( 'sr_poet_diary_bg_image' ) . '" id="' . $this->get_field_id( 'sr_poet_diary_bg_image' ) . '" value="' . esc_attr( $this->get_field_value( 'sr_poet_diary_bg_image' ) ) . '" size="70" /></p>';
+
+	}
 }
 
 /**

@@ -11,39 +11,48 @@
 	<ul>
 		<?php bp_get_options_nav(); ?>
 	</ul>
-</div><!-- .item-list-tabs -->
+</div>
+<!-- .item-list-tabs -->
 
 <?php
 
+
+
 add_action('bp_before_profile_content', 'display_poet_diary');
+
 /*
- * Dispaly favorite stuff ontop of open diary book.
+ * Display favorite stuff on top of open diary book.
  * If no favorites have been selected, display some type 
  * of default content 
  */
 
 function display_poet_diary() {
-	?>
 
-	<div style="background-image:url(http://spokenroyalty.dev/wp-content/themes/spoken-royalty/images/open-book-pic-2.jpg);
-		background-repeat:no-repeat;
-		background-position:0% 30%;
-		width: 900px;
-		height: 600px;
-		margin-top: 20px;">
-		<div class="one-half first book-left-profile">
-			<?php bp_get_template_part('members/single/profile-leftside');	?>
-		</div>
-		<div class="one-half book-right-profile">
-			<?php bp_get_template_part('members/single/profile-rightside'); ?>
-		</div>
-		<div class="clear-line"></div>
-	</div>
+	// set the default image name
+	$my_default_poet_book  = get_stylesheet_directory_uri() . '/images/default-poet-open-diary.jpg';
 
-	<?php
+	// get any image name set in theme settings.
+	$my_new_poet_book =''; 
+	$my_new_poet_book = genesis_get_option( 'sr_poet_diary_bg_image', 'spokenroyalty-settings' );
+
+	// if provided image file is not the default, use provided one instead
+	if ( strlen($my_new_poet_book) == 0 ) 
+		$poet_book_bg = $my_default_poet_book;
+	else
+		$poet_book_bg = $my_new_poet_book;
+
+	// Display content over each side of poet diary
+	echo '<div style="background-image:url(' . $poet_book_bg . ');">';
+	
+	echo '<div class="poet-book-background">';
+	echo '<div class="one-half first book-left-profile">';
+	echo bp_get_template_part('members/single/profile-leftside');
+	echo '</div>';
+
+	echo '<div class="one-half book-right-profile">';
+	echo bp_get_template_part('members/single/profile-rightside') . '</div>';
+	echo '<div class="clear-line"></div></div></div>';
 }
-//* Now go on to display rest of the story. 
-
 
 /**
  * Fires before the display of member profile content.

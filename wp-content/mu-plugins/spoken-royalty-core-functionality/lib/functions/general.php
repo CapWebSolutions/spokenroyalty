@@ -202,6 +202,22 @@ function disable_self_ping( &$links ) {
 	}
 }
 
+
+// We will make use of widget_title filter to 
+//dynamically replace custom tags with html tags
+
+add_filter( 'widget_title', 'accept_html_widget_title' );
+function accept_html_widget_title( $mytitle ) { 
+
+  // The sequence of String Replacement is important!!
+  
+	$mytitle = str_replace( '[link', '<a', $mytitle );
+	$mytitle = str_replace( '[/link]', '</a>', $mytitle );
+    $mytitle = str_replace( ']', '>', $mytitle );
+
+	return $mytitle;
+}
+
 // Gravity Forms Specific Stuff =======================================
 /**
  * Fix Gravity Form Tabindex Conflicts
@@ -278,3 +294,4 @@ function remove_titles_from_pages() {
         remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
     }
 }
+

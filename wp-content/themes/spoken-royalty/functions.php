@@ -104,18 +104,16 @@ function spokenroyalty_site_header_banner() {
 	$my_logo_small = $my_image_dir . "/images/spoken-logo-100.jpg" ;
 	$my_logo_xsmall = $my_image_dir . "/images/spoken-logo-50.jpg" ;
 
-	echo '<div class="site-header-banner">
-		<img src="' . $my_image_dir . '/images/header-banner-words.png" />';
-		?><div class="site-header-banner-logo">
-		<img src="<?php echo $my_logo_full;?>" srcset="
-		<?php echo $my_logo_xsmall;?> 300w, 
-		<?php echo $my_logo_small;?> 700w, 
-		<?php echo $my_logo_medium;?> 1400w"/></div>
-		<?php
-		genesis_widget_area( 'home-featured', array(
-			'before'	=> '<div class="wrap">',
-			'after'		=> '</div>',
-		));
+
+	echo '<div class="site-header-banner">';
+	echo '<a href="' . home_url("/home/") . '"><img src="' . $my_image_dir . '/images/header-banner-words.png" />';
+	echo '<div class="site-header-banner-logo"><img src="' . $my_logo_full . '" srcset="' . $my_logo_xsmall . ' 300w, ' . 
+	$my_logo_small . ' 700w, ' . $my_logo_medium . ' 1400w"/></div></a>';
+
+	genesis_widget_area( 'home-featured', array(
+		'before'	=> '<div class="wrap">',
+		'after'		=> '</div>',
+	));
 	echo '</div>';
 
 }
@@ -174,24 +172,18 @@ function spoken_royalty_welcome_message() {
 //* Modify the WordPress read more link
 add_filter( 'the_content_more_link', 'spokenroyalty_read_more' );
 function spokenroyalty_read_more() {
-
 	return '<a class="more-link" href="' . get_permalink() . '">' . __( 'Continue Reading', 'spokenroyalty' ) . '</a>';
-
 }
 
 //* Modify the content limit read more link
 add_action( 'genesis_before_loop', 'spokenroyalty_more' );
 function spokenroyalty_more() {
-
 	add_filter( 'get_the_content_more_link', 'spokenroyalty_read_more' );
-
 }
 
 add_action( 'genesis_after_loop', 'spokenroyalty_remove_more' );
 function spokenroyalty_remove_more() {
-
 	remove_filter( 'get_the_content_more_link', 'spokenroyalty_read_more' );
-
 }
 
 //* Remove entry meta in entry footer
@@ -204,7 +196,6 @@ function spokenroyalty_remove_entry_meta() {
 		remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 		remove_action( 'genesis_entry_footer', 'genesis_entry_footer_markup_close', 15 );
 	}
-
 }
 
 //* Modify the size of the Gravatar in the author box
@@ -216,10 +207,8 @@ function spokenroyalty_author_box_gravatar( $size ) {
 //* Modify the size of the Gravatar in the entry comments
 add_filter( 'genesis_comment_list_args', 'spokenroyalty_comments_gravatar' );
 function spokenroyalty_comments_gravatar( $args ) {
-
 	$args['avatar_size'] = 100;
 	return $args;
-
 }
 
 //* Hook split sidebar areas below primary sidebar
@@ -294,4 +283,62 @@ remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 
 if ( ! isset( $content_width ) ) {
 	$content_width = 800;
+}
+
+
+
+/**
+* filter function to force wordpress to add our custom srcset values
+* @param array  $sources {
+*     One or more arrays of source data to include in the 'srcset'.
+*
+*     @type type array $width {
+*          @type type string $url        The URL of an image source.
+*          @type type string $descriptor The descriptor type used in the image candidate string,
+*                                        either 'w' or 'x'.
+*          @type type int    $value      The source width, if paired with a 'w' descriptor or a
+*                                        pixel density value if paired with an 'x' descriptor.
+*     }
+* }
+* @param array  $size_array    Array of width and height values in pixels (in that order).
+* @param string $image_src     The 'src' of the image.
+* @param array  $image_meta    The image meta data as returned by 'wp_get_attachment_metadata()'.
+* @param int    $attachment_id Image attachment ID.
+
+* @author: Aakash Dodiya
+* @website: http://www.developersq.com
+*/
+add_filter( 'wp_calculate_image_srcset', 'dq_add_custom_image_srcset', 10, 5 );
+function dq_add_custom_image_srcset( $sources, $size_array, $image_src, $image_meta, $attachment_id ){
+			
+	// image base name		
+	$image_basename = wp_basename( $image_meta['file'] );
+	// upload directory info array
+	$upload_dir_info_arr = wp_get_upload_dir();
+	// base url of upload directory
+	$baseurl = $upload_dir_info_arr['baseurl'];
+	$image_baseurl = '';	
+	// Uploads are (or have been) in year/month sub-directories.
+	if ( $image_basename !== $image_meta['file'] ) {
+		$dirname = dirname( $image_meta['file'] );
+		
+		if ( $dirname !== '.' ) {
+			$image_baseurl = trailingslashit( $baseurl ) . $dirname; 
+		}
+	}
+
+	$image_baseurl = trailingslashit( $image_baseurl );
+	// check whether our custom image size exists in image meta	
+	// if( array_key_exists('iphone6-landscape', $image_meta['sizes'] ) ){
+
+		// add source value to create srcset
+	// 	$sources[ $image_meta['sizes']['iphone6-landscape']['width'] ] = array(
+	// 			 'url'        => $image_baseurl .  $image_meta['sizes']['iphone6-landscape']['file'],
+	// 			 'descriptor' => 'w',
+	// 			 'value'      => $image_meta['sizes']['iphone6-landscape']['width'],
+	// 	);
+	// }
+	
+	//return sources with new srcset value
+	return $sources;
 }
