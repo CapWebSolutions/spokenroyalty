@@ -55,6 +55,8 @@ class spokenroyalty_Settings extends Genesis_Admin_Boxes {
 			'sr_poet_diary_bg_image' => '/wp-content/themes/spokenroyalty/images/open-poet-diary.jpg',
 			'sr_copyright' => 'My Name, All Rights Reserved',
 			'sr_credit' => 'Website by Cap Web Solutions',
+			'sr_my_works_title_len' => 10,
+			'sr_my_works_content_len' => 200,
 			);
 		
 		// Create the Admin Page
@@ -94,6 +96,7 @@ class spokenroyalty_Settings extends Genesis_Admin_Boxes {
 	function metaboxes() {
 		add_meta_box('sr_scripture_text_metabox', 'Scripture Text', array($this, 'sr_scripture_text_metabox' ), $this->pagehook, 'main', 'high');
 		add_meta_box('sr_poet_diary_bg_image_metabox', 'Poet Diary Background Image', array( $this, 'sr_poet_diary_bg_image_metabox' ), $this->pagehook, 'main', 'high');
+		add_meta_box('sr_my_works_len_metabox', '"My Works" Minimum Lengths', array( $this, 'sr_my_works_len_metabox' ), $this->pagehook, 'main', 'high');
 	}
 	
 	
@@ -118,6 +121,16 @@ class spokenroyalty_Settings extends Genesis_Admin_Boxes {
 	echo '<p><input type="text" name="' . $this->get_field_name( 'sr_poet_diary_bg_image' ) . '" id="' . $this->get_field_id( 'sr_poet_diary_bg_image' ) . '" value="' . esc_attr( $this->get_field_value( 'sr_poet_diary_bg_image' ) ) . '" size="70" /></p>';
 
 	}
+	/**
+	 * My Works Minimum Length Settings Metabox
+	 * @since 1.0.0
+	 */
+	function sr_my_works_len_metabox() {
+		echo '<p><strong>Title Length</strong> (Default is 10)</p>';
+		echo '<p><input type="number" value="10" min="3" name="' . $this->get_field_name( 'sr_my_works_title_len' ) . '" id="' . $this->get_field_id( 'sr_my_works_title_len' ) . '" value="' . esc_attr( $this->get_field_value( 'sr_my_works_title_len' ) ) . '" size="2" /></p>';
+		echo '<p><strong>Work Content Length</strong> (Default is 200)</p>';
+		echo '<p><input type="number" value="200" min="50" name="' . $this->get_field_name( 'sr_my_works_content_len' ) . '" id="' . $this->get_field_id( 'sr_my_works_content_len' ) . '" value="' . esc_attr( $this->get_field_value( 'sr_my_works_content_len' ) ) . '" size="2" /></p>';
+	}	
 }
 
 /**

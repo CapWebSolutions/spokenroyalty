@@ -46,12 +46,14 @@ function display_poet_diary() {
 	
 	echo '<div class="poet-book-background">';
 	echo '<div class="one-half first book-left-profile">';
-	echo bp_get_template_part('members/single/profile-leftside');
+	// echo bp_get_template_part('members/single/profile-leftside');
+	create_poet_profile_left_side();
 	echo '</div>';
 
 	echo '<div class="one-half book-right-profile">';
-	echo bp_get_template_part('members/single/profile-rightside') . '</div>';
-	echo '<div class="clear-line"></div></div></div>';
+	create_poet_profile_right_side();
+	// echo bp_get_template_part('members/single/profile-rightside');
+	echo '</div><div class="clear-line"></div></div></div>';
 }
 
 /**
