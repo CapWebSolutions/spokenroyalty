@@ -462,6 +462,7 @@ Structure and Layout
 	float: right;
 	padding-top: 10px;
 	width: 720px;
+	/*width: 73vw;*/
 }
 
 .content-sidebar .content {
@@ -476,7 +477,9 @@ Structure and Layout
 
 .sidebar {
 	float: right;
-	/*width: 360px;*/
+	width: 360px;
+	/*width: 23vw;*/
+	/*padding-right: 5vw;*/
 }
 
 .sidebar-content .sidebar {
@@ -1171,6 +1174,11 @@ Site Header
 .site-header-banner .wrap .widget-title {
 	color: #fff;
 }
+.site-banner {
+	background-color: #9B6E13;
+	max-height: 250px;
+	width: 100%;
+}
 
 /* Title Area
 --------------------------------------------- */
@@ -1656,7 +1664,7 @@ Sidebar
 }
 
 .sidebar .widget {
-	margin-bottom: 60px;
+	margin-bottom: 6px;
 }
 
 .sidebar .simple-social-icons ul li a {

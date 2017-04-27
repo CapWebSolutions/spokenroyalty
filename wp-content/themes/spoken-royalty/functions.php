@@ -282,7 +282,7 @@ remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 
 
 if ( ! isset( $content_width ) ) {
-	$content_width = 800;
+	$content_width = 1200;
 }
 
 
