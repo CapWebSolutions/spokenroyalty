@@ -105,16 +105,55 @@ function spokenroyalty_site_header_banner() {
 	$my_logo_xsmall = $my_image_dir . "/images/spoken-logo-50.jpg" ;
 
 
-	echo '<div class="site-header-banner">';
-	echo '<a href="' . home_url("/home/") . '"><img src="' . $my_image_dir . '/images/header-banner-words.png" />';
-	echo '<div class="site-header-banner-logo"><img src="' . $my_logo_full . '" srcset="' . $my_logo_xsmall . ' 300w, ' . 
-	$my_logo_small . ' 700w, ' . $my_logo_medium . ' 1400w"/></div></a>';
+	// echo '<div class="site-header-banner">';
+	// echo '<a href="' . home_url("/home/") . '"><img src="' . $my_image_dir . '/images/header-banner-words.png" />';
+	// echo '<div class="site-header-banner-logo"><img src="' . $my_logo_full . '" srcset="' . $my_logo_xsmall . ' 300w, ' . 
+	// $my_logo_small . ' 700w, ' . $my_logo_medium . ' 1400w"/></div></a>';
+	// echo '</div>';
+
+	// echo '<div class="site-banner">';
+	// echo '<div class="site-banner-logo">LOGO<br>HERE</div>';
+	// echo '<div class="site-banner-words">The Site Where Poets Live</div>';
+	// echo '</div>';
+	// echo '<a href="' . home_url("/home/") . '"><img src="' . $my_image_dir . '/images/header-banner-words.png" />';
+	// echo '<div class="site-header-banner-logo"><img src="' . $my_logo_full . '" srcset="' . $my_logo_xsmall . ' 300w, ' . 
+	// $my_logo_small . ' 700w, ' . $my_logo_medium . ' 1400w"/></div></a>';
+
+	echo '<div class="site-banner-wrap">';
+	echo '<div class="site-banner-b1 logo-width">';
+	// echo 'LOGO<br>HERE'; ?>
+	<table class="site-banner-wrap">
+  <tr>
+    <td>
+	<?php 
+	echo '<img src="' . $my_logo_full . '" srcset="' . $my_logo_xsmall . ' 300w, ' . 
+	$my_logo_small . ' 700w, ' . $my_logo_medium . ' 1400w"/>'; 
+	?>
+	</td>
+	</tr>
+	<td> 
+	<?php
+	echo '</div>';
+		echo '<div class="site-banner-b2 words-width">';
+	// echo 'LOGO<br>HERE'; ?>
+	<table class="site-banner-wrap">
+  <tr>
+    <td>
+	<?php 
+		echo 'The Site Where Poets Live'; 
+	?>
+	</td>
+	</tr>
+	</table> 
+	<?php
+	echo '</div>';
+	echo '</div>';
 
 	genesis_widget_area( 'home-featured', array(
 		'before'	=> '<div class="wrap">',
 		'after'		=> '</div>',
 	));
-	echo '</div>';
+
 
 }
 /* Widget area to overlay on banner */
@@ -168,14 +207,6 @@ function spoken_royalty_welcome_message() {
 		include_once( CHILD_DIR . '/lib/widgets/cws-welcome.php');
 	}
 }
-add_action( 'genesis_after_entry_content', 'spoken_royalty_display_potm_submission_form' );
-function spoken_royalty_display_potm_submission_form() {
-	if ( is_page( 'Home' ) ) {
-		include_once( CHILD_DIR . '/lib/widgets/cws-schedule-potm-form.php');
-	}
-}
-
-
 
 //* Modify the WordPress read more link
 add_filter( 'the_content_more_link', 'spokenroyalty_read_more' );
@@ -264,6 +295,13 @@ genesis_register_sidebar( array(
 	'name'        => __( 'Before Header', 'spokenroyalty' ),
 	'description' => __( 'This is the before header widget area.', 'spokenroyalty' ),
 ) );
+
+genesis_register_sidebar( array(
+	'id'          => 'scripture-message',
+	'name'        => __( 'Welcome Scripture Message', 'spokenroyalty' ),
+	'description' => __( 'This is the welcome scripture message widget area.', 'spokenroyalty' ),
+) );
+
 genesis_register_sidebar( array(
 	'id'          => 'logged-in-sidebar',
 	'name'        => __( 'Logged-in sidebar', 'spokenroyalty' ),
@@ -282,11 +320,9 @@ remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 3
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 
 
-if ( ! isset( $content_width ) ) {
-	$content_width = 800;
-}
-
-
+// if ( ! isset( $content_width ) ) {
+// 	$content_width = 1200;
+// }
 
 /**
 * filter function to force wordpress to add our custom srcset values

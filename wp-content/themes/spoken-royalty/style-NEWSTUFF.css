@@ -462,6 +462,7 @@ Structure and Layout
 	float: right;
 	padding-top: 10px;
 	width: 720px;
+	/*width: 73vw;*/
 }
 
 .content-sidebar .content {
@@ -476,7 +477,9 @@ Structure and Layout
 
 .sidebar {
 	float: right;
-	/*width: 360px;*/
+	width: 360px;
+	/*width: 23vw;*/
+	/*padding-right: 5vw;*/
 }
 
 .sidebar-content .sidebar {
@@ -1069,17 +1072,7 @@ img.waic-logo {
     padding-bottom: 50px;
 }
 
-.welcome-waic {
-	font-size: 60px;
-	font-weight: bold;
-	text-align: center;
-	margin-bottom: 20px;
-}
-img.welcome-waic {
-	vertical-align: middle;
-	display: inline;
-	padding: 0;
-}
+
 
 /*
 Before Header
@@ -1174,14 +1167,79 @@ Site Header
 	transform: translate(0, -50%);
 	max-width: 600px;
 	color: #fff;
-	/*background: rgba(0,0,0,0.7);*/
-	/*padding: 40px;*/
 }
 
 .site-header-banner .wrap .widget-title {
 	color: #fff;
 }
+.site-banner {
+	/*background-color: lightblue;*/
+	background-color: #9B6E13;
+	height: 250px;
+	width: 100%;
+	top:20px;
+}
+.site-banner-words {
+	font-family: Raleway, sans-serif;
+	color: #fff;
+	font-size: 30px;
+	font-size: 3.0rem;
+	padding: 0 20%;
+	position: relative;
+	float: left;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.site-banner-logo {
 
+	position: absolute;
+	top: 20px;
+	left: 5vw;
+	/*border: 2px #9B6E13 solid;*/
+}
+.site-banner-wrap {
+	background-color: #9B6E13;
+}
+.site-banner-wrap {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	/*overflow: auto;*/
+	/*height: 100%;*/
+}
+.site-banner-b1 {
+	float: left;
+	background-color: #9B6E13;
+	/*vertical-align: top;*/
+	/*position: absolute;*/
+	/*width: 100%;*/
+	height: 100%;
+}
+.site-banner-b2 {
+	float: left;
+	background-color: #9B6E13;
+	color: #fff;
+	font-family: Raleway, sans-serif;
+	font-size: 30px;
+	font-size: 3.0rem;
+	/*width: 100%;*/
+	height: auto;
+}
+.site-banner-wrap table, 
+.site-banner-wrap td {
+	vertical-align: middle;
+   text-align: center;
+}
+.logo-width {
+	width: 25%; 
+}
+.words-width {
+	width: 75%;
+}
+.float {
+	float: left;
+}
 /* Title Area
 --------------------------------------------- */
 
@@ -1666,7 +1724,7 @@ Sidebar
 }
 
 .sidebar .widget {
-	margin-bottom: 60px;
+	margin-bottom: 6px;
 }
 
 .sidebar .simple-social-icons ul li a {
