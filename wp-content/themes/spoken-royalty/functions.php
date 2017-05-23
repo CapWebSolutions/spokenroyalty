@@ -40,24 +40,25 @@ add_theme_support( 'custom-header', array(
 	'width'                  => 150,
 ) );
 
+
 //* Add custom background callback 
-function spokenroyalty_background_callback() { 
+// function spokenroyalty_background_callback() { 
 
-	$background = get_background_image();  
-	$color = get_background_color();
+// 	$background = get_background_image();  
+// 	$color = get_background_color();
 
-	if ( ! $background && ! $color )  
-		return; 
+// 	if ( ! $background && ! $color )  
+// 		return; 
 
-	echo trim( sprintf( 
-		"<style type='text/css'>.custom-background .site-header-banner { background: %s %s %s %s %s; } </style>",
-		$background ? 'url('. $background .')' : '',
-		$color ? '#'. $color : 'transparent', 
-		get_theme_mod( 'background_repeat', 'repeat' ), 
-		get_theme_mod( 'background_position_x', 'left' ), 
-		get_theme_mod( 'background_attachment', 'scroll' ) 
-	) );
-} 
+// 	echo trim( sprintf( 
+// 		"<style type='text/css'>.custom-background .site-header-banner { background: %s %s %s %s %s; } </style>",
+// 		$background ? 'url('. $background .')' : '',
+// 		$color ? '#'. $color : 'transparent', 
+// 		get_theme_mod( 'background_repeat', 'repeat' ), 
+// 		get_theme_mod( 'background_position_x', 'left' ), 
+// 		get_theme_mod( 'background_attachment', 'scroll' ) 
+// 	) );
+// } 
 
 //* Add support for 3-column footer widgets
 add_theme_support( 'genesis-footer-widgets', 3 );

@@ -90,7 +90,7 @@ function spokenroyalty_init() {
 
 	//include extras
 	//include_once( CHILD_DIR . '/lib/functions/post-types.php');
-	// include_once( CHILD_DIR . '/lib/functions/metaboxes.php');
+	include_once( CHILD_DIR . '/lib/functions/metaboxes.php');
 
 	// Enable Gravity Forms setting to hide form labels
 	// add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );

@@ -872,6 +872,21 @@ Widgets
 	line-height: 1.2;
 }
 
+/* Poet Of the Month P.O.T.M. 
+--------------------------------------------- */
+h2.potm_title {
+	text-align: center;
+	font-size: 24px;
+	font-size: 2.4rem;
+}
+.potm_name_label {
+	margin: 20px 0;
+}
+.potm_name,
+.potm_location {
+	font-weight: bold;
+
+}
 
 /*
 Plugins
@@ -1259,7 +1274,7 @@ Site Header
 
 .beautiful .site-header-banner {
 	height: auto;
-	width: 100%;
+	/*width: 100%;*/
 	}
 
 .beautiful .site-header-banner-logo {

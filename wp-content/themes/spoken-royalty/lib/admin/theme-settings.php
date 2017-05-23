@@ -58,7 +58,6 @@ class spokenroyalty_Settings extends Genesis_Admin_Boxes {
 			'sr_my_works_title_len'			=> 10,
 			'sr_my_works_content_len'		=> 200,
 			'sr_submit_start_day_of_month'	=> 23,
-			'sr_submit_end_day_of_month'	=> 23,
 			'sr_submit_start_time_of_day'	=> 12,
 			'sr_submit_duration'			=> 30,
 			);
@@ -101,7 +100,9 @@ class spokenroyalty_Settings extends Genesis_Admin_Boxes {
 		add_meta_box('sr_scripture_text_metabox', 'Scripture Text', array($this, 'sr_scripture_text_metabox' ), $this->pagehook, 'main', 'high');
 		add_meta_box('sr_poet_diary_bg_image_metabox', 'Poet Diary Background Image', array( $this, 'sr_poet_diary_bg_image_metabox' ), $this->pagehook, 'main', 'high');
 		add_meta_box('sr_my_works_len_metabox', '"My Works" Minimum Lengths', array( $this, 'sr_my_works_len_metabox' ), $this->pagehook, 'main', 'high');
-		add_meta_box('sr_submit_details', 'POTM Submission Defaults', array( $this, 'sr_submit_details_metabox' ), $this->pagehook, 'main', 'high');
+		add_meta_box('sr_submit_details', 'POTM Submission Defaults', array( $this, 'sr_submit_details_metabox' ), $this->pagehook, 'main', 'default');
+		add_meta_box('sr_potm_details', 'POTM Selection', array( $this, 'sr_potm_selection_metabox' ), $this->pagehook, 'main', 'default');
+
 	}
 	
 	/**
@@ -138,14 +139,37 @@ class spokenroyalty_Settings extends Genesis_Admin_Boxes {
 	function sr_submit_details_metabox() {
 		echo '<p><strong>Start Day of Month ( 1 - 27 )</p>';
 		echo '<p><input type="number" value="23" min="1" max="27" name="' . $this->get_field_name( 'sr_submit_start_day_of_month' ) . '" id="' . $this->get_field_id( 'sr_submit_start_day_of_month' ) . '" value="' . esc_attr( $this->get_field_value( 'sr_submit_start_day_of_month' ) ) . '" size="2" /></p>';
-		// echo '<p><strong>End Day of Month ( 1 - 27 )</p>';
-		// echo '<p><input type="number" value="" min="1" max="27" name="' . $this->get_field_name( 'sr_submit_end_day_of_month' ) . '" id="' . $this->get_field_id( 'sr_submit_end_day_of_month' ) . '" value="' . esc_attr( $this->get_field_value( 'sr_submit_end_day_of_month' ) ) . '" size="2" /></p>';
 		echo '<p><strong>Start Hour ( 0 - 23 )</p>';
 		echo '<p><input type="number" value="0" min="0" max="23" name="'  . $this->get_field_name( 'sr_submit_start_time_of_day' ) . '" id="' . $this->get_field_id( 'sr_submit_start_time_of_day' ) . '" value="' . esc_attr( $this->get_field_value( 'sr_submit_start_time_of_day' ) ) . '" size="2" /></p>';
 		echo '<p><strong>Duration in minutes ( 1-59 )</p>';
 		echo '<p><input type="number" value="30" min="1" max="59" name="' . $this->get_field_name( 'sr_submit_duration' ) . '" id="' . $this->get_field_id( 'sr_submit_duration' ) . '" value="' . esc_attr( $this->get_field_value( 'sr_submit_duration' ) ) . '" size="2" /></p>';
 	}	
-	
+	/*
+	 * POTM Selection Metabox
+	 * @since 1.0.0
+	 */
+	function sr_potm_selection_metabox() {
+		echo '<p><strong>Video URL from media library.</p>';
+		echo '<p><input type="video" name="' . $this->get_field_name( '_potm_video_url' ) . '" id="' . $this->get_field_id( '_potm_video_url' ) . '" value="' . esc_attr( $this->get_field_value( '_potm_video_url' ) ) . '" size="150" /></p>';
+		echo '<p><strong>Video Cover Poster from media library.</p>';
+		echo '<p><input type="url" name="' . $this->get_field_name( '_potm_video_poster' ) . '" id="' . $this->get_field_id( '_potm_video_poster' ) . '" value="' . esc_attr( $this->get_field_value( '_potm_video_poster' ) ) . '" size="150" /></p>';
+		echo '<p><strong>Poet name</p>';
+		echo '<p><input type="text" name="'  . $this->get_field_name( '_potm_name' ) . '" id="' . $this->get_field_id( '_potm_name' ) . '" value="' . esc_attr( $this->get_field_value( '_potm_name' ) ) . '" size="50" /></p>';
+		echo '<p><strong>Poet location</p>';
+		echo '<p><input type="text" name="' . $this->get_field_name( '_potm_location' ) . '" id="' . $this->get_field_id( '_potm_location' ) . '" value="' . esc_attr( $this->get_field_value( '_potm_location' ) ) . '" size="50" /></p>';
+//  $outline = '<label for="potm_video_url" style="width:150px; display:inline-block;">'. esc_html__('POTM Video URL (from media library)', 'spokenroyalty') .'</label>';
+//  $potm_name = get_post_meta( $meta_id->ID, 'potm_video_url', true );
+//  $outline .= '<input type="text" name="potm_video_url" id="potm_video_url" class="potm_video_url" value="'. esc_attr($potm_video_url) .'" style="width:300px;"/><br>';
+//  echo $outline;
+//  $outline = '<label for="potm_name" style="width:150px; display:inline-block;">'. esc_html__('POTM Name', 'spokenroyalty') .'</label>';
+//  $potm_name = get_post_meta( $meta_id->ID, 'potm_name', true );
+//  $outline .= '<input type="text" name="potm_name" id="potm_name" class="potm_name" value="'. esc_attr($potm_name) .'" style="width:300px;"/><br>';
+//  echo $outline;
+//  $outline = '<label for="potm_location" style="width:150px; display:inline-block;">'. esc_html__('POTM Location', 'spokenroyalty') .'</label>';
+//  $potm_location = get_post_meta( $meta_id->ID, 'potm_location', true );
+//  $outline .= '<input type="text" name="potm_location" id="potm_location" class="potm_location" value="'. esc_attr($potm_location) .'" style="width:300px;"/>';
+//  echo $outline;
+	}
 }
 
 /**
